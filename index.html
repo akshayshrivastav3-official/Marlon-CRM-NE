@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Veloris ERP | AI Software — CRM + ERP Feature Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F4; --surface:#FFFFFF; --ink:#16252A; --muted:#56666B; --line:#D9E0DE;
+  --crm:#0E7C74; --crm-soft:#E2F2EF; --erp:#3446A0; --erp-soft:#E6E9F7;
+  --ai:#9A5B12; --ai-soft:#F7EDDF; --plat:#3E4C59; --plat-soft:#E7EBEF;
+  --hero:#16252A; --hero-ink:#F3F5F4; --hero-muted:#A9BBBE;
+  --head:'Sora', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --body:'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1719; --surface:#172124; --ink:#E6EEEC; --muted:#9AABAE; --line:#2A383B;
+    --crm:#4FC1B4; --crm-soft:#133330; --erp:#9AA7EE; --erp-soft:#1C2240;
+    --ai:#E0A45A; --ai-soft:#33260F; --plat:#B3C1CE; --plat-soft:#1F282F;
+    --hero:#0A1113; --hero-ink:#E6EEEC; --hero-muted:#8FA2A5;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1719; --surface:#172124; --ink:#E6EEEC; --muted:#9AABAE; --line:#2A383B;
+  --crm:#4FC1B4; --crm-soft:#133330; --erp:#9AA7EE; --erp-soft:#1C2240;
+  --ai:#E0A45A; --ai-soft:#33260F; --plat:#B3C1CE; --plat-soft:#1F282F;
+  --hero:#0A1113; --hero-ink:#E6EEEC; --hero-muted:#8FA2A5;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--crm); outline-offset:2px; border-radius:4px}
+.wrap{max-width:1160px; margin:0 auto; padding:0 24px}
+h1,h2,h3,h4{font-family:var(--head); margin:0; letter-spacing:-0.01em; line-height:1.2}
+
+/* HERO */
+.hero{background:var(--hero); color:var(--hero-ink); padding:64px 0 56px}
+.hero .kicker{color:var(--hero-muted); font-size:15px; margin-bottom:18px}
+.hero h1{font-size:clamp(34px,5.2vw,58px); font-weight:700; max-width:17ch; line-height:1.08}
+.hero p.lede{color:var(--hero-muted); font-size:19px; max-width:62ch; margin:20px 0 0}
+.meridian{margin-top:44px; display:grid; grid-template-columns:1fr 2px 1fr; gap:0 28px; align-items:start}
+.meridian .axis{background:linear-gradient(var(--crm),var(--erp)); height:100%; border-radius:2px; position:relative}
+.side h3{font-size:15px; font-weight:600; color:var(--hero-muted); margin-bottom:10px}
+.side .big{font-family:var(--head); font-size:clamp(40px,6vw,72px); font-weight:700; line-height:1}
+.side.crm .big{color:#6FD3C6} .side.erp .big{color:#AEB9F4}
+.side .count{color:var(--hero-muted); font-size:15px; margin:6px 0 14px}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chips a{font-size:14px; text-decoration:none; padding:4px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.18); color:var(--hero-ink)}
+.chips a:hover{background:rgba(255,255,255,.08)}
+.base{grid-column:1 / -1; margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.base a{display:block; text-decoration:none; padding:14px 16px; border-radius:10px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12)}
+.base b{font-family:var(--head); font-weight:600; display:block; font-size:16px}
+.base span{color:var(--hero-muted); font-size:14.5px}
+.base .ai b{color:#F0C48A} .base .pl b{color:#C9D4DE}
+.stats{display:flex; flex-wrap:wrap; gap:28px 44px; margin-top:36px; color:var(--hero-muted); font-size:15px}
+.stats strong{display:block; font-family:var(--head); font-size:26px; color:var(--hero-ink)}
+
+/* BRAND BAR — styled to match the Veloris logo */
+.brandbar{background:#FFFFFF; position:relative}
+.brandbar::after{content:""; position:absolute; left:0; right:0; bottom:0; height:4px; background:linear-gradient(90deg,#16C3F0 0%,#1A7FE0 45%,#0B2E7A 100%)}
+.brand{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px 36px; padding-top:26px; padding-bottom:28px}
+.brand img{width:min(400px,76vw); height:auto; display:block}
+.brand-text{text-align:right}
+.brand-text .pname{font-family:var(--head); font-weight:700; font-size:22px; color:#0B2E7A; letter-spacing:-0.01em}
+.brand-text .pname span{color:#1A8FE3}
+.brand-text .tagline{color:#4A5B7A; font-size:15.5px; margin-top:2px}
+.nav-brand{display:flex; align-items:center; gap:8px; text-decoration:none; flex:none}
+.nav-brand img{height:30px; width:auto; border-radius:6px; background:#fff; padding:1px 2px}
+.nav-brand span{font-family:var(--head); font-weight:700; font-size:15px; white-space:nowrap}
+@media (max-width:760px){ .brand-text{text-align:left} .nav-brand span{display:none} }
+
+/* NAV */
+.nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top,0px)}
+.nav .wrap{display:flex; align-items:center; gap:16px; height:60px}
+.nav .links{display:flex; gap:4px; overflow-x:auto; flex:1; scrollbar-width:none}
+.nav .links::-webkit-scrollbar{display:none}
+.nav .links a{white-space:nowrap; text-decoration:none; font-size:15px; font-weight:500; color:var(--muted); padding:6px 10px; border-radius:6px}
+.nav .links a:hover{color:var(--ink); background:var(--surface)}
+.theme-btn{border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:8px; padding:6px 10px; font:inherit; font-size:14px; cursor:pointer}
+
+/* SECTIONS */
+section.block{padding:72px 0 8px}
+.sec-head{display:grid; grid-template-columns:64px 1fr; gap:0 12px; margin-bottom:28px}
+.sec-no{font-family:var(--head); font-weight:700; font-size:30px; color:var(--line); line-height:1.1}
+.sec-head h2{font-size:clamp(26px,3.4vw,36px)}
+.sec-head p{grid-column:2; color:var(--muted); margin:10px 0 0; max-width:70ch}
+.prose{max-width:72ch}
+.prose p{margin:0 0 14px}
+
+/* CRM vs ERP */
+.versus{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+.vcard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:24px}
+.vcard.crm{border-top:4px solid var(--crm)} .vcard.erp{border-top:4px solid var(--erp)}
+.vcard h3{font-size:21px; margin-bottom:6px}
+.vcard .q{color:var(--muted); margin:0 0 14px}
+.vcard ul{margin:0; padding-left:18px}
+.vcard li{margin:6px 0}
+.why{margin-top:18px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px 24px}
+.why h3{font-size:18px; margin-bottom:12px}
+.why .row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.why .row div b{display:block; margin-bottom:4px}
+.why .row div{color:var(--muted); font-size:16px}
+.why .row div b{color:var(--ink)}
+
+/* LAYERS */
+.layers{display:grid; gap:10px}
+.layer{display:grid; grid-template-columns:120px 1fr; gap:16px; align-items:center; padding:18px 20px; border-radius:12px; border:1px solid var(--line); background:var(--surface)}
+.layer .ln{font-family:var(--head); font-weight:600; font-size:14px; color:var(--muted)}
+.layer h4{font-size:17px; margin-bottom:4px}
+.layer p{margin:0; color:var(--muted); font-size:16px}
+.layer.l3{background:var(--ai-soft); border-color:transparent}
+.layer.l2{background:var(--crm-soft); border-color:transparent}
+.layer.l1{background:var(--plat-soft); border-color:transparent}
+
+/* TOOLBAR */
+.toolbar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:22px}
+.search{flex:1 1 280px; position:relative}
+.search input{width:100%; font:inherit; font-size:16px; padding:11px 14px; border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--ink)}
+.filters{display:flex; gap:6px; flex-wrap:wrap}
+.filters button{font:inherit; font-size:15px; font-weight:500; padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--muted); cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.result-note{color:var(--muted); font-size:15px; margin:-8px 0 18px; min-height:1em}
+
+/* GROUP + DOMAIN */
+.group-title{display:flex; align-items:baseline; gap:12px; margin:40px 0 16px; padding-bottom:10px; border-bottom:2px solid var(--gc)}
+.group-title h3{font-size:24px; color:var(--gc)}
+.group-title span{color:var(--muted); font-size:15px}
+.group-intro{color:var(--muted); max-width:72ch; margin:-4px 0 20px}
+.domain{background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--gc); border-radius:12px; padding:24px 24px 20px; margin-bottom:16px}
+.d-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 14px}
+.d-head h4{font-size:22px}
+.tag{font-size:13px; font-weight:600; padding:2px 9px; border-radius:6px; background:var(--gs); color:var(--gc)}
+.d-count{color:var(--muted); font-size:14.5px; margin-left:auto}
+.d-intro{margin:8px 0 18px; color:var(--muted); max-width:78ch}
+.feats{display:grid; grid-template-columns:1fr 1fr; gap:4px 28px; margin:0; padding:0; list-style:none}
+.feats li{padding:12px 0; border-top:1px solid var(--line)}
+.feats li b{display:block; font-weight:700; margin-bottom:2px}
+.feats li p{margin:0; color:var(--muted); font-size:16px; line-height:1.5}
+.feats mark{background:var(--ai-soft); color:inherit; border-radius:3px; padding:0 1px}
+.connects{margin-top:14px; font-size:15px; color:var(--muted)}
+.connects b{color:var(--ink); font-weight:600}
+.g-crm{--gc:var(--crm); --gs:var(--crm-soft)}
+.g-erp{--gc:var(--erp); --gs:var(--erp-soft)}
+.g-ai{--gc:var(--ai); --gs:var(--ai-soft)}
+.g-pl{--gc:var(--plat); --gs:var(--plat-soft)}
+.empty{padding:28px; text-align:center; color:var(--muted); background:var(--surface); border:1px dashed var(--line); border-radius:12px}
+
+/* FLOW */
+.flow{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; counter-reset:step}
+.step{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px}
+.step .n{font-family:var(--head); font-weight:700; color:var(--muted); font-size:14px}
+.step h4{font-size:17px; margin:6px 0}
+.step p{margin:0; color:var(--muted); font-size:15.5px}
+.step.ai{background:var(--ai-soft); border-color:transparent}
+.branch{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
+.branch div{border-radius:12px; padding:16px 18px}
+.branch .ok{background:var(--crm-soft)} .branch .hu{background:var(--erp-soft)}
+.branch b{display:block; font-family:var(--head); font-weight:600}
+.branch span{color:var(--muted); font-size:15.5px}
+.audit{margin-top:12px; padding:12px 16px; border:1px dashed var(--line); border-radius:10px; color:var(--muted); font-size:15px}
+
+/* GUARDRAILS */
+.guards{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.guard{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px}
+.guard h4{font-size:16.5px; margin-bottom:6px}
+.guard p{margin:0; color:var(--muted); font-size:15.5px}
+
+/* PHASES */
+.phases{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.phase{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px; position:relative}
+.phase .n{font-family:var(--head); font-weight:700; font-size:42px; color:var(--line); line-height:1}
+.phase h4{font-size:18px; margin:8px 0 6px}
+.phase p{margin:0 0 10px; color:var(--muted); font-size:16px}
+.phase .mods{font-size:14.5px; color:var(--muted)}
+.phase .mods b{color:var(--ink)}
+
+/* GLOSSARY */
+.gloss{display:grid; grid-template-columns:repeat(3,1fr); gap:0 28px; margin:0}
+.gloss div{padding:12px 0; border-top:1px solid var(--line)}
+.gloss dt{font-family:var(--head); font-weight:600; font-size:16px}
+.gloss dd{margin:2px 0 0; color:var(--muted); font-size:15.5px}
+
+
+/* CRM FLOW TREE */
+.ct{--ctl:color-mix(in srgb, var(--crm) 40%, var(--line))}
+.ct-root{display:flex; flex-direction:column; align-items:center; text-align:center}
+.ct-rootnode{background:var(--crm); color:var(--surface); border-radius:16px; padding:16px 34px}
+.ct-rootnode h3{font-size:clamp(26px,3.6vw,36px)}
+.ct-rootnode p{margin:4px 0 0; font-size:15px; opacity:.9}
+.ct-stem{width:2px; height:30px; background:var(--ctl)}
+.ct-branches{display:grid; grid-template-columns:repeat(5,1fr); gap:14px; position:relative; padding-top:30px}
+.ct-branches::before{content:""; position:absolute; top:0; left:10%; right:10%; height:2px; background:var(--ctl)}
+.ct-branch{position:relative}
+.ct-branch::before{content:""; position:absolute; top:-30px; left:50%; width:2px; height:30px; background:var(--ctl)}
+.ct-mod{background:var(--surface); border:2px solid var(--crm); border-radius:14px; padding:12px; text-align:center}
+.ct-mod h4{font-size:17px; color:var(--crm)}
+.ct-mod p{margin:4px 0 0; color:var(--muted); font-size:14px}
+.ct-mod .n{display:inline-block; margin-top:8px; font-size:13px; font-weight:700; color:var(--crm); background:var(--crm-soft); border-radius:999px; padding:2px 10px}
+.ct-feats{list-style:none; margin:0; padding:0 0 0 16px; position:relative}
+.ct-feats::before{content:""; position:absolute; left:16px; top:0; bottom:22px; width:2px; background:var(--ctl)}
+.ct-feat{position:relative; padding:12px 0 0 16px}
+.ct-feat::before{content:""; position:absolute; left:0; top:32px; width:16px; height:2px; background:var(--ctl)}
+.ct-card{background:var(--crm-soft); border-radius:10px; padding:9px 11px}
+.ct-card b{display:block; font-size:15px}
+.ct-card span{display:block; color:var(--muted); font-size:13.5px; margin-top:2px; line-height:1.4}
+.ct-foot{margin-top:28px; text-align:center; color:var(--muted); font-size:15px}
+@media (max-width:1100px){
+  .ct-branches{grid-template-columns:repeat(3,1fr); row-gap:36px}
+  .ct-branches::before{left:16%; right:16%}
+  .ct-branch:nth-child(n+4)::before{display:none}
+}
+@media (max-width:720px){
+  .ct-branches{grid-template-columns:1fr; gap:26px; padding-top:0; padding-left:20px; border-left:2px solid var(--ctl); margin-left:8px}
+  .ct-branches::before{display:none}
+  .ct-branch::before,.ct-branch:nth-child(n+4)::before{display:block; top:24px; left:-20px; width:20px; height:2px}
+  .ct-root{align-items:flex-start; text-align:left}
+  .ct-stem{margin-left:8px; height:22px}
+  .ct-mod{text-align:left}
+}
+
+
+/* ERP FAMILY TREE */
+.et{--etl:color-mix(in srgb, var(--erp) 40%, var(--line)); margin:6px 0 44px}
+.et-rootnode{display:inline-block; background:var(--erp); color:var(--surface); border-radius:16px; padding:16px 30px}
+.et-rootnode h4{font-size:clamp(26px,3.6vw,36px)}
+.et-rootnode p{margin:4px 0 0; font-size:15px; opacity:.9}
+.et-fams{position:relative; margin-left:26px; padding-top:22px}
+.et-fams::before{content:""; position:absolute; left:0; top:0; bottom:40px; width:2px; background:var(--etl)}
+.ef{position:relative; margin:0 0 18px 30px; background:var(--surface); border:1px solid var(--line); border-top:3px solid var(--erp); border-radius:14px; padding:18px 18px 20px}
+.ef::before{content:""; position:absolute; left:-31px; top:38px; width:30px; height:2px; background:var(--etl)}
+.ef::after{content:""; position:absolute; left:-36px; top:34px; width:10px; height:10px; border-radius:50%; background:var(--erp)}
+.ef-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; margin-bottom:4px}
+.ef-head h5{font-family:var(--head); font-size:20px; margin:0; color:var(--erp)}
+.ef-head .n{font-size:14px; color:var(--muted)}
+.ef-desc{margin:0 0 16px; color:var(--muted); font-size:15.5px; max-width:70ch}
+.ef-mods{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px}
+.et-mod{display:block; text-decoration:none; background:var(--erp-soft); border:2px solid var(--erp); border-radius:12px; padding:11px 12px}
+.et-mod h6{font-family:var(--head); font-size:16px; margin:0; color:var(--erp); line-height:1.25}
+.et-mod p{margin:3px 0 0; color:var(--muted); font-size:13.5px}
+.et-mod .n{display:inline-block; margin-top:6px; font-size:12.5px; font-weight:700; color:var(--erp)}
+.et-feats{list-style:none; margin:0; padding:0 0 0 14px; position:relative}
+.et-feats::before{content:""; position:absolute; left:14px; top:0; bottom:20px; width:2px; background:var(--etl)}
+.et-feat{position:relative; padding:10px 0 0 14px}
+.et-feat::before{content:""; position:absolute; left:0; top:28px; width:14px; height:2px; background:var(--etl)}
+.et-card{border:1px solid var(--line); border-radius:9px; padding:8px 10px; background:var(--surface)}
+.et-card b{display:block; font-size:14.5px}
+.et-card span{display:block; color:var(--muted); font-size:13px; margin-top:1px; line-height:1.4}
+.fam-sub{display:flex; align-items:baseline; gap:10px; margin:28px 0 12px}
+.fam-sub h5{font-family:var(--head); font-size:17px; margin:0; color:var(--erp)}
+.fam-sub span{color:var(--muted); font-size:14px}
+@media (max-width:720px){
+  .et-fams{margin-left:14px}
+  .ef{margin-left:20px; padding:16px 14px}
+  .ef::before{left:-21px; width:20px}
+  .ef::after{left:-26px}
+}
+
+/* CRM <-> ERP CONNECTIONS */
+.cx-legend{display:flex; flex-wrap:wrap; gap:18px; margin:-6px 0 22px; font-size:15px; color:var(--muted)}
+.cx-legend i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+.cx-flow{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 20px 22px; margin-bottom:14px}
+.cx-flow h3{font-size:19px}
+.cx-flow > p{margin:4px 0 16px; color:var(--muted); font-size:15.5px; max-width:75ch}
+.cx-chain{display:flex; flex-wrap:wrap; align-items:stretch; gap:8px 0}
+.cx-node{flex:1 1 130px; min-width:130px; max-width:210px; border-radius:10px; padding:10px 12px; border:2px solid; display:flex; flex-direction:column; justify-content:center}
+.cx-node small{font-size:12.5px; font-weight:600; opacity:.85}
+.cx-node b{font-size:14.5px; line-height:1.3}
+.cx-node.c{border-color:var(--crm); background:var(--crm-soft); color:var(--ink)} .cx-node.c small{color:var(--crm)}
+.cx-node.e{border-color:var(--erp); background:var(--erp-soft); color:var(--ink)} .cx-node.e small{color:var(--erp)}
+.cx-arrow{flex:0 0 28px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:18px}
+.cx-arrow.hand{flex-basis:64px; flex-direction:column; color:var(--ink); font-weight:700; font-size:18px}
+.cx-arrow.hand span{font-size:11.5px; font-weight:700; background:linear-gradient(90deg,var(--crm),var(--erp)); color:var(--surface); border-radius:999px; padding:1px 7px; margin-bottom:2px; white-space:nowrap}
+@media (max-width:720px){
+  .cx-chain{flex-direction:column}
+  .cx-node{max-width:none; flex:none}
+  .cx-arrow{flex:none; height:24px; transform:rotate(90deg)}
+  .cx-arrow.hand{transform:none; flex-direction:row; gap:8px; height:30px}
+  .cx-arrow.hand::after{content:"↓"}
+  .cx-arrow.hand em{display:none}
+}
+
+
+/* PRICING */
+.pr-models{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:26px}
+.pm{border-radius:14px; padding:20px 22px; border:1px solid var(--line); background:var(--surface)}
+.pm.saas{border:2px solid var(--ink)}
+.pm h3{font-size:19px; margin-bottom:4px}
+.pm .who{color:var(--muted); margin:0 0 12px; font-size:15.5px}
+.pm ul{margin:0; padding-left:18px; font-size:15.5px}
+.pm li{margin:5px 0}
+.pm .badge{display:inline-block; font-size:12.5px; font-weight:700; padding:2px 9px; border-radius:999px; background:var(--ink); color:var(--bg); margin-bottom:10px}
+.pm .badge.alt{background:var(--plat-soft); color:var(--plat)}
+.pr-grid{display:grid; grid-template-columns:1fr 1fr 1.15fr; gap:14px; align-items:stretch}
+.pc{background:var(--surface); border:1px solid var(--line); border-top:5px solid var(--pcc); border-radius:14px; padding:22px; display:flex; flex-direction:column}
+.pc.crm{--pcc:var(--crm)} .pc.erp{--pcc:var(--erp)}
+.pc.both{--pcc:var(--ink); border:2px solid var(--ink); border-top:5px solid var(--ink); position:relative}
+.pc .flag{position:absolute; top:-14px; right:18px; background:var(--ink); color:var(--bg); font-size:13px; font-weight:700; padding:4px 12px; border-radius:999px}
+.pc h3{font-size:22px; color:var(--pcc)}
+.pc.both h3{color:var(--ink)}
+.pc .scope{color:var(--muted); font-size:15px; margin:4px 0 16px}
+.price{border-radius:12px; padding:14px 16px; margin-bottom:10px}
+.price.s{background:var(--ink); color:var(--bg)}
+.price.n{background:var(--bg); border:1px solid var(--line)}
+.price .lbl{font-size:14px; font-weight:600; opacity:.85}
+.price .amt{font-family:var(--head); font-size:34px; font-weight:700; line-height:1.1; margin-top:2px}
+.price .amt small{font-family:var(--body); font-size:15px; font-weight:500; opacity:.8; margin-left:4px}
+.price .sum{font-size:13.5px; opacity:.8; margin-top:2px}
+.pc ul{margin:10px 0 0; padding-left:18px; font-size:15px; color:var(--muted)}
+.pc li{margin:5px 0}
+.pc li b{color:var(--ink); font-weight:600}
+.pr-table{margin-top:26px; overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--surface)}
+.pr-table table{width:100%; border-collapse:collapse; min-width:520px; font-size:16px}
+.pr-table th,.pr-table td{padding:13px 18px; text-align:left; border-bottom:1px solid var(--line)}
+.pr-table thead th{font-family:var(--head); font-size:15px; background:var(--bg)}
+.pr-table tbody tr:last-child td{border-bottom:0; font-weight:700}
+.pr-table td.num{font-family:var(--head); font-weight:600; white-space:nowrap}
+.pr-note{margin-top:14px; color:var(--muted); font-size:15px; max-width:80ch}
+@media (max-width:980px){ .pr-grid{grid-template-columns:1fr} .pc.both{margin-top:10px} }
+@media (max-width:720px){ .pr-models{grid-template-columns:1fr} }
+
+footer{margin-top:80px; padding:32px 0 48px; border-top:1px solid var(--line); color:var(--muted); font-size:15px}
+
+@media (max-width: 860px){
+  .meridian{grid-template-columns:1fr; gap:24px}
+  .meridian .axis{height:2px; width:100%}
+  .base{grid-template-columns:1fr}
+  .versus,.why .row,.feats,.branch,.guards,.phases,.gloss{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .sec-head{grid-template-columns:1fr}
+  .sec-head p{grid-column:1}
+  .sec-no{font-size:22px; margin-bottom:4px}
+  .layer{grid-template-columns:1fr; gap:6px}
+  .d-count{margin-left:0; width:100%}
+}
+@media (max-width: 520px){
+  .wrap{padding:0 16px}
+  .flow{grid-template-columns:1fr}
+  .domain{padding:20px 16px 16px}
+  body{font-size:16.5px}
+}
+@media print{ .nav,.toolbar,.result-note,.theme-btn{display:none} .domain{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<div class="brandbar" id="top">
+  <div class="wrap brand">
+    <img src="data:image/jpeg;base64,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" alt="Veloris ERP | AiiA — The AI Core of Global Finance" width="1000" height="360">
+    <div class="brand-text"><div class="pname">Veloris ERP <span>| AI Software</span></div><div class="tagline">CRM + ERP · Complete feature guide &amp; proposal</div></div>
+  </div>
+</div>
+<header class="hero">
+  <div class="wrap">
+    <h1>Every CRM and ERP feature, explained in one place.</h1>
+    <p class="lede">A single platform where sales, service, finance, supply chain, people and operations work from the same live record — with a governed team of AI agents on top. This guide walks through all 155 features, module by module, and what each one does for the business.</p>
+
+    <div class="meridian" aria-label="Platform map">
+      <div class="side crm">
+        <h3>Sell &amp; serve — the CRM side</h3>
+        <div class="big">22</div>
+        <div class="count">features across 5 modules</div>
+        <div class="chips" id="chips-crm"></div>
+      </div>
+      <div class="axis" aria-hidden="true"></div>
+      <div class="side erp">
+        <h3>Run &amp; deliver — the ERP side</h3>
+        <div class="big">95</div>
+        <div class="count">features across 16 modules</div>
+        <div class="chips" id="chips-erp"></div>
+      </div>
+      <div class="base">
+        <a class="ai" href="#d-ai"><b>AI &amp; Agents — 16 features</b><span>A copilot and specialised agents that act across both sides, within approved limits.</span></a>
+        <a class="pl" href="#d-platform"><b>Platform foundation — 22 features</b><span>The shared data graph, security, workflow, analytics and integrations underneath everything.</span></a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div><strong>155</strong>documented features</div>
+      <div><strong>23</strong>business modules</div>
+      <div><strong>16</strong>AI agents &amp; controls</div>
+      <div><strong>1</strong>shared source of truth</div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="nav-brand" href="#top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABcCAIAAAAqO+alAAAvGklEQVR42uW9d7xdZZU3/l3reXY757bcFEJIQodIUUooAorYUBRRFF4GxIL11bG86lhGRrCNDXVm1NdhxoZYx1HBMjAWVBAQKUonIi2EQJKb3Nzce0/Z+3nW9/fHPjdc0ghJQOf37s/5Y99z9j1n77XXs8p3fdfaYmbYik1E6h2SWzhgg083+eaj/somjxeRrfzyjd/f+H+35qPNbRQIQcAMBFVVAZJGAFCtJcXpQgMgWynobZDatv3LY/ryzUl56+/WNvycCILRqQjq3zKA6O0LgGhwKhv8u3/Us1kvrPVvbr34HicRb/zl08/58fvR+sKjmVctQ/z5zWO/XYZb1+Wj0Shx1yE5frfkZU9KG96ZUR4p6i1p9Obu//QVsYWV+7iq8xO+UUSMBKGqP1rS+r+3hJv/NLm8neT7Nv3MZP+hsGeH991TPbCm876jk9cfOcgIqEBqK/J4Chr//9oIGsWrnH3xQ/98E19y/KyjFyZr1rVnDMWJhvOFLhW+XdML/9g9++J1r9zL/evfDGeiBAQEoNuw8Dlt29ynm7tz9fY/UdBm8CrnXLTsoz/qsDF4wz2hqfHYBfnzhputVvzx6rC8a58v7aCD0p3eMOcbDxZvvWgUQhL15eoONF5/WZP9qGe4qZNkb2FzvSfb4EOCYpAY6Z3+4uaVH/rWg8ns4cmYLC+TCXB5yZEqNF2yv/MfzNJK7EMl1jascXR+wR3V169b6xTRuMME/ZeQ0Y74ZgggRgmQClJSOpAupW2YNLaIkkIhhKISiI9843Z0CQLBdmmUuUMCrDZ3sLcPD7pdRGfTRrx4cDzj3L0Gv39fGA/RiXJzgt54+W/5UresqhvY9I1Dmu0X5fp/f0ToOu1r69/d4FciUFLa4Bi5OnJlsDXBJkFx0ue06SRzQmCiHZ3KH+5cddVVt2tmVlUo7ZCdddghDZztUHj/YMRZI61zK7eqRCcIgssG03tXxctvn6gNiN9KU/Coq34DH7hBvLW5UKTe2VzguPUpyfTz3DgenWZoCQEERgRIaZw0toUmSLwOgRlkorK7RuPdq8LtI7xzZbx+RfcfjstPXtT/+5vur1qVdwW7FYLdsgzP3itpepkgd03d2fdV35MsUT9hwLihbSOjmJ8lf1jWecGBgyQ9/l/aKDAgGLpEBMWh6aQJWd2Nd6/q3rIC1y4Lf1ha3bsK4x2BAVGKQXfg3AaAFavGEAM6o5xINdMbbvbX7q4LBvybftY99AD/e+99n7cOQdGWi6tYtMud5zbWyJra+PttyL62YD3WH7/Bf21NWL3JZTTdJmwhJZl+5MYLQkQIGGGEF2SKDFhndsfK6ncPdK96MF6/Su+flC4TSAo6zHQgQaAEmh2nEXBlu43xlTK2jPTqM+HMH1yNEw/uHrqru/KeyvdZVLimKBQt4t5yuM/Kslu5CFBU/JaT102agm1Luzcpi0c1UFuf723C4BAEIymAE3ECJ1xX2bUrq8uWV5ctl1vWxInokedoOswl+pkXMtf7nRx3cTrfYTY5wKTpAWD+3GEgsLUaMmC+AZ88sHTo30f9cw6W/bNq9Vhoolq6vKmFSAtYAWnYZNcWzM0BeYTpmH4lIVqdvgukF/kIOJXRP4yarI+IpJcAkZxSSyFtupYqIFuU1zbc1C2FvUCkpSpeFMDabvjdivCTpZ1f3GN3ToglCQYzLFAMSf8Q9+vDUxpYnOuBHgtVB4EM4gCBAUkVCWDxgQvcwACTFJ1RjClQuW6X1cxLf+MPW4SPnDzYrexHN3T/41dtRHUT3XuveZDNNYe+d/GWsI7Eu02HQ48tFNBpd4MgI0S24lu2R8oEzagiTsSJtGO8fHn5/T93frEs3NNOkDg0Eiz0yUy3+7AdMlAtHnSHZ7q3Sg7XMZs0GYsYBR0sE80gqVgqQMTBT9r5kMP2u+6mlZ5jNhEMtEglRYpFcwdH29bq2pH7pWMjE9dctXZ8tDW+8sHFJ8w+amFhZiriN4jQBTI6NnnJr5esWd0umYgrJM+kUUgzlyJD5pAKM49MkRKpiBco4CBuCkYREDCwXg8kCsjewsNVG0Kr5b59+rreH2wQUBDilRAF7LqVnYvunrhomd3aTiEJBgvs6ebMkCf325ENHNGQRalviI4HPlTyGsIsekqh6Ff0KxoqTSc5oKAQBDOv7z7jkFNu/BE0spqUzjpCyEj03bnE9tkrXbculKJPflJy029H1q2dQLP9lhfvVsAi6nDdbL1RM9KJLrnroQOP+1A1GtEcgs5A/zAGZmJoBoYG0N+HgRxDBQYy9Av6FU2HQtHnUAAZeo4mFSSEF3jC1aKNTzY728kpLolC5Q5LQGov56Qn92UT5U+Xtv7j7u6VI9aFw0COOcnCWe6wGTh+SJ+a6lyRTrQVUdYEaRkN9CIJ0BQMKPodGiqFSAYo4AQqvRQxmjnvXvGZK7/x3TuShouaw+XwGVxunXDyWfvvtWg4Bvz60nuv/+0KsHzlWQu/fNq+iFFFIY8UtAjMqKqXXb3k5DM+P2lN7Zthvol0QLKMzSYGhrS/nwMFm6k0UjQTNDwKRdNJ7pGLFUDqJRfmQApkggySiKWMCoTwceN70qR3kx9bFkcAhLBeK2CkGJAqADHalQ+1L7y7/aOHbEWpaCSY6XYZ9EcO4YVDemTTzxBpRawOmCRAU9EEyISpIgdyRSGSCjzgBco61FaIqIB1CGIApDSe/rk//vDyETT70WzAeXSrIoTXv2bfMvU/uXTk/gcDFqSvOiL/v8+ZmVudfYtwU+idmTnnfvrLW1/2mm91Ndc0i0khWc68KX396B9gfxN9DWkmaKbIPQuVZiKFQy7MBblHLsxVUiAXZIpUkEJTESeh6l6cJC9KfKC5rRG1PIxGECQk1mkHmTsFMNqtfrC0/bV72r8dNWQZ5qfzd86f3uALcx6ZuX7VduBaQ9tgIh5sAAUkBROhFyQqXuAEXkQ3dT4xRoKqToAAmADAv/x+7KsruLIo1LuRNXHvrDpgfvaTm8u+XJ6+b3rW7v7EPoHR5OFv3ISgRSSE6L37waU3n/bGb9I1LCksLSRrIG+i2cfBPjQb0szQTFCkKBwaDrlHpmgI8kQKZQ6kTnJhJkgdMkFK711IZI9YXt3IZoqgp5ubzix6ro1igAkiEIGK9MCACoA/j3W/cff4hfd17w4OM5vFztkxg+HFg/qcIpkP1yFGDS0zL3AiKZkACdD02tjUb8YYyxCqymgGEYrAmHlXNLJa+QBEkQ5NoU2VCfA+ogu5JeCOydCasH36/LOGdF8QoAXAPcKHbFrQBKsqpon/0neved07LvaDM6J4JDmyJooG+ppoNtjM0cykkUqRsOEk98gcCpHCo1DLRTLHTCQTZk4yZUok6hOpJL7e4fz+ItQGHKAQEJnmIU1AItJKkZJSESWRKOeoOuDq1Z1/v3Pd91ZUE1mK4WSfIZw4nL9kMNkv0XaUNaQRuaAp0oAlIiAUbDgFUBnveWjs9rtXLLln9b33r3jwwTVr1o5PjLe67XbZbpdVFWMkCasQQ5G4ffdc8IoznnXqiUfHGFXViAgBmQgfDm1laukZDKSIioA23TrKekxgWk2s92aMliT+9L+94NsXL3fDg0ZDmjMt0Cik0YdmwWaKRobCo5FK4ZA5ZE4KRdOxUKSCRJEpMkUuyIDESaqSKln+sC99UZYF0q2PdwBAIhDAAHZN2oJJYtIsU8x3Thh/8+Dkv9/X+fEYoJLOz16yS3FGUw5RSURWR0waAelTDKj0A5lAITDzTgH87Pr7f/CrW3970/K7lo11Vq9Fq4PYBQJYgQZGMIIGi7AIq0CDEBUxMXnOh1517nvPNDNVfRhAnfIWU25ZapnLtBhuExq9cdpWF75WrBg5/ISPL497iTgKkWSW52g0tdnHZoIik0bCIkHhUSSSOWSKRi1olVSQKnOVXJApU0Uqmqp57iXxyuHmTNEpZZBIBqADtIgWOW5sQxLFQidJjJetbH9+WefySSL1e8zKTp3lnjfo91GNhglDG0xEB1Sata0CPEXEosE7vfbPI2d/5Q8/u+IuTE7AGVScBmUX0Vh1GUtYRAywgFjRAi0K65KrOZVYWpG42676wsJdZm0MAW7l5reQJjinMYadd57zz+e+8KVv/FK65/PKyUpjkBhYlSy78IBzcA4aoSoaoQIFuoBQjDABTcTX60sIUiItgb9T5f0TrX8baFYEIBXZgbRoY+SkSQsYENnfa9fspyOtLzzQuWEcKJLDd0/OGPbHN/0MdePGlZEJ0FQdVjTAVOh6hTohLEZ6786/dMnb/unabiu6RiGZY9VBKC3CTBDZg/4NoIC1c1DAOOV/QzBobJWdVWvW7hhBb3JzzoUQTz7pmWf89Kpv/vCS9KDTyomuhg5IxijBUEX6ACdQraVMcRBCCJCiEBWJFEVt1EQhMIlJJl/uxBdn4YQsXUWWwERPxDrgbJFTWrx4vPXp1dVN64AkfcEe/uVD7tDCNUTbxrFoDZFB1VyYCR1BoYgIazgf0eC9+4/fLH3jP14tReb7NIYSAMTB+V4I4wj4Hn7UUzaTaIQIRECSomC73GXnxvx5c7ZZyj0bvcnq/fTIGuDI2tbip716+UQjefJp3Y5HZ60UOfMMecY8QZ5IkUqRMHfIPXKHDEhVModckSoKRa6SqqUiqSITLVzIZJGL/z3QENEuScKpzlZzxh9PlB9bF28sI6inFO6VQ/6QIhGga0iBQugBD0lq3y4go0A4ZRSNUMHSkdbhb/nlyFipajEGMopFxBKxopUIFaxEKBGDWFmbDoZSrGKspLbUoFMNoyP/9Jm3vu11J8Vozm1jTUqnVx82qEf0AAtVknOG+z/7yXfGVXfakv/0fUHnLqQ5KQNDkMpQRVSRVUS5/kVUxspQEYEoiZIs2fszWKyCj7wj4gPtzpDKoHBvp3sIL++GZ451ThvnbdDX9ftfz8vPn1ccWaQgPDFLMVPQhDREM0EvmyBRJxlTXshoEHn7l25duSa4PI1wEKfiABVRqJvCQpw4L+qpnk4hAlGKg3iIUkS9D+vGn3bcwae99Fmf+84Vhm1PaLfq/jj1oYovfcFTz3ztqeX998oNX/GdP+u8XZhkEhVRNACBrAyBqAyVSahlaqis/oiloSd3Q318CB767ZK/C2G26s+r7nPb3Rd25Loob+tzN81Jz5/dPLJI1CQhhiADIjnEi3gR3fwlR2Pi3Jd+teyiy1cl/Y1o0nMk4sQ5OA9VqINTqIM40Vqyvt6vX9BUXQ7TvK/454++qa+Rfvt7l60bnwSwbZCXbLLk8wjIvAfkA8DImnWHHvuGB5at0DRxTznJFp0Q146xaknmkCpShzxB5pBrL/zIFLlial9yZW/HWQ4UzhUu5PoUh0XAd9slnP/fqXtroosSD6BFU4gCCmgPvp86vRpt3uicjRRg6Wj3iHdft2q0hEaGkjSxijGIRbBiLBGDxC5ioFUSKsYgsUIsEbqwgBhoIVGrVq58/9+f/pH3ngngimtue9Le82cND2ybpZYt0DA2SIVjNO/cxf911YtP/4DvHwztTrLHwbL45Er7OT4miTBLJK1zbkUqkntkykwkc8gdMpVUmTvkilxQuNpwoyGWeFh8cbQP5OnBqQMkkOsh7McA6gkYxTl5yefvvOiylb6wUHZhARZgcWqnhFUSAmIpsWIMtdWGBYQuYlWbaRGziYlDDtz1yh99NPEOIESdPs6mozZ83rlQhZNOOOqs15wURlb7hgt/vsIuOS9r3eV33Z2NARWFOFJhAhMGIgJREMiKrMhARPay6UhEwohAx5ipvLmZHJz6MkokHeCBx3RdArUI5+QbV6++6Iq1vi+PJiIOIlCHnk1QqBP1UGWdZ0sd0SlEpx+m8B7uM+eelWcJSVWF2fbAu/qYUHbnnZl94u9fuevec+JkW5uzQmeyvPTL7sbvp3NSDM8gRCJAZVREYQArIoiEHhrESEbrSTlCDEIVQ1fk/3TDajNfX7sIRLZ8ahswCyLoVO9bU77rO6s08wajCFVFHcRBalFqT/RS7yhERHVK0FqjHJokYXTkTWc969inLqqq4L0TEXWKHeIMN2l3NqqN0sxmzRz4zMfezgChQB0V3av/y7732XTklmTuLPQNwUSoMGUUqbXbwMgehEHQ6sxLGIURMYojboF8qluq0rbOoK0HDHqYQaQI3/Xd1StGVVJvIlNuLYF6qKMqRSGCHimmjrlrLyA9WYtq4sO6dYuePP8j7zvDzLz3j+A0bb+gN+kSN+BmiIh3PoR48guOOuXU48Lo6kRJC8izsHpF+V/f1t98N03XuZ1nMc2nsiwPuNqfgQpTxKlkLBIRjCaBNDrvPkdeFaIX1CXLzbmc9ZHo+iOiwXu94Mp1//m7ju93Jk58ApdAPcRBFbVq965XBSq9rERBra2UQOAVVSycfvmTb+5v5oTV1VAStn3FCn2MRCGBQFVI+8y5r5uzy+zYLZ0AMYgCTru33lB94/Puup/kg5XuNAtpQe1FURAHSu+qiFrNxWp7DUYB0fLuXWU5YUCdrm8d0cFIp7h3pHz3N9dIoZFCdVAH5+k8ndaGqK41g7UFEBGFuEd4XIELZpPrPv+p1x516D5ViCJKM4MB2B5P+IiE5VGLpOsZpKpqZvN3mf3RD5xlrQk4D5IWrGyLRHQny9/8Olz4peSOq7IhdbNnMM2gHs6xdkfiDAqKmJgRETRKgAV4yNWinym7rldQeXTrQdIMELzjm2MrO7krHKS2y7UpEKj0TDN6qj1lLhSipkIhYDDT0A2rVnzgnS8+62XHVCF4pwKxGvES/K7VidtRNX4Ujd7k+yRVXYzx1acf/8zjj4pjYy4RocFCL6NNfRgd6/zox+Er5/ubf5/2q8wdQNGg93QOogKtfV1twcWEkYgwo6b+07Q/xuBENrdYp2tGNPFOvn7FxA+vFT87tboEqEqn0J6jY52b9ETs1occtYgVgJmyCqvXnnbq0ee+9aQQK+dcj1lBUdUPj7aWRjoR21ZBP6Jm+JiYSqSpulvuuPepz3tHOzhYjBARpUvEpXApfYroxFK3567+OUfysANCkVurDZpmwhRMRHJFBiZEAqZOE9VMAsJxVbykyDxUsFnTSAA0Eb1/TXX4+0ZWFn1aVFZFxiBWMVS9HMRKxigWECoJJUONb5QIHcRSqo511rmqFdeOHXnEbj//6tsbmZdeGAMBVOT/rG2r2aeHm7Yd7Ft3zjnnbDOBM0abO2e4NP7qx791fX3GXliGKT8jPkGjsImu3XQPlixNEucWzMJgYZEAkSi8wIFO4ERUqBQVp3I3Ocv4VOeMUJVNbjUF36medf7q61Zkfo63aUU6kRqhZw+JNwMJGlBD+wZGWETZdrGMk5N77Tn8k3//29lDzfoqIqCEKl+3prO0jF+e3Sd1OLDNGr21meGmmGM0VtFCsONf+ndXXnuPK3IjAKF60QQugc/hc6a5+BzRE87vPs8ddxAP2zMMpAwVvCAXphQvSIFE4CCeEAyX4co02ce79Xr0SDoHQzDv3Tevmnz5+d1kz0aMkWaIgSEgVhIjYsVYIpR1HohQ9XS56iJ2tepaZ52U4zYxPrs/uewbbzpgj51CNK8SQA9EyJnrute243VzGoMCA1SegMxwU54yElnqfeoWHXq0xHKqH6zmbBpotMBYSegidOGiZBLuX9n92m/ss/+dXn1XkqgMJnROe1U2rdF3EgodSfS9VWXW6+DjRsiRc3r/mvKd32rpbgMhV/NKJ3Qq3ok6qsKpqKuD6J5jFCWEKqJiMQiAgGau//G5Vx2wx04hBK9SgV50jHjRePfH3fijmfmgSsD2MlH0MXVbTo9bVZB4/dkfHzjijT/48hVrkgV7I8YeW8mMMbJXfwtTVaLAUMEBDQkPri4v+J194tfpFfclzjDoqVqX4EREIKR4534o9s2qdKKRxLSIniQoIvL2r0+scH06S0FKIvBa43PinThFL+Gu3aA8/IJYVYFBSLHu1z91+jMO3T2E6JwLZCJyV4jPnSgvKe0ng9mTEhdIh+1l/OgGctxC+LHeyNTtjK0q/N23bjr+g7+/cWlM+ofK5qJQCays7aDCxIL0cJyerIVBYpBQqURLEe5d3f3itfjwlf43K5wj+h0UoFKEIE00yc42PhjpHqnR0eCcfO23kz+4zaWLMkOUVOBqKQtU6BSuzqrrQFmgQgFrcx+imDmV2O7+6wdfcvIz9qtCUKcR8KpXluE5nfj7iO/3+WMzFwG3IxhVunGYvMmArweWAtHoVW5YPn7sp64/7+KlLs+yflc9cP+xi+ed877TODnpfCJQgmSkRbHAusBsATH2XFAMCJUkRMNXd60Ln7sVH749uXK1JpAGKKDRDApd6t0Hqq6IWY+tDwJO5f7V5Xu+W+r+fVbAai6MBxypQgc4EVVxvWi6Tr5FnQAIARYTJ2F88iNvf9prX/iUEKI6AehFvlGWzy9xD3hBgZfkaUXTHdTg9BgY/2ZQpap+6bqH3nHxfeNr6ef0y2S3O8YXnfjkC9933ECR/urX115+xW2+vxmDQQA1gD0DIp4SwAD49YV9iRFZYgnsT2Pun1ry83X+BbPlsMIyYUmL0av/KvnSis9LfDA6ISmq8S0XtFb2NZL5EsZFE4XVTGjAIBDYwwiR1AmLekGwYLDovSvXdP73yw95/xlHhGB06kUieXar81FzTvg1r69Ik8pQU36xYzV6c403tXZH0jlpG99wyT2vu2jZOJKkcBCpxrunPW/X733o+GbqSPvsB1+TFWAshegxJcyUAbUZYQCDMKIGkxgJI6NYhbyyTOJtrfKzy/GRh9xVHSdE6gWIzv1dGddGU0HX4FQuuKp78Z99ujgNgUiNnkzYMxe+Vybu+c+6JA7tsQyNzmvsVkcfsfNn3nhMiDEqE5EVZqd0qo9qmsG+6vnK1AfQy/YCSZuOozeN3tWMC4ve6dLJ7ikX3fv9myeTRi4GQMJY55SjZn7jzYd5ACI07jJv9mSnvOIX17lmwZ5v41Q2PIVYqpMpRK0uKYlqzSyUVJjAVpDXBl0Cl0PmqMvkwdJiFY73CUUeWFue8W9l69AmhwVVL8yRh6lkNccpsoaPzdR6zhkxOqHSIqpvf+Dpe8xsBEPm9BfdcForXOGzgVB9NZHTsyyQU5wF0UeCsY9XeEdIoHnnfr+q/czv3/vrZTHpy6poIgzt7jMPmXHB6w9xAGBOoKox2vvecsq+T94jtEt1KjRaZF1RZoBF6SGkcXrVgzEgVoglQ0dCKWnJvBP+PFH92zo7bxKXlbnJF5r+GhcT5Vu+2X5gKHF7wMiaqooESBy8wGuPaetUEgenEEcIjQIkiY8ur9p4/Uv2Xrz7DFhMnX62U72oDLf7ZKdO+3sJTs3SYHDyMM1rh2n0ueeeu8kwbspiWKJ66bJ1L/7Zsge7SZK4WJkSsRP3HMZPXnfAjLROKNbX+VkU2V677/yt712m3tedFjV6BlHUicwUDN/Dz6TWRNaRV93EIaQ6YSocVbuFcpt2R/mnEO+/vnv+jS55bhHWEyFrXG6qyxWsmVwUQAhEMppjFDKMd4YH43ln7fnBk/fx4N3Bzhrv/DN98Om+ofzPwj0tTSqgTsC3jMpuI9axOW0OxsTpRcvWnX7ZyrZ5F8w6lApaxjS0fvHKvZ46vz9Em44frmeivuotn77gq5e4WbNijJBENBWfMimQ5PS5+Bwug8voUvEZXAKXwqVwGXxKTcVl8AWTXJIUPqc1lGqporTkRUmcr5ykBEFJloIKKIEuURGlsWtSmXSCdbpali5a1SoR2y9f7N5/0oJFc5qI9rV29Q8By5wHcQzDhc1kN6+BcNjaztQdFXUwkIlzFy9fd/pVI+20cCHG0kREHENZfuaEXZ46v7+K0W+E0ooqaf/4/lf/7JfXPTTa9S6JiKyjujqg1gALNUItorAasQzsTV2A1JdbR2YQ0CMpmeba8cniGPZRjoOpCgjrJaFwhIeYsMb0AZCJuMq8TY4fvKt86EULXrjfAIAlnepd68JPAlBkqOyV3j7Xn/SrBNJvsXi2nb29m7bRkZKou2xV6/TrR9tp4RSRgFPnJLbjs/bte/Ohc4KZU914fTlIDHHe3OGP/sNr2C7hRGB1vFFb5IezmNpMx8D12aP14AipMQqr6lhFzNgGZpb2NDVAEsLRPM0DHvCEB5zQCVyNJ5FA1bahpPrYy4Yuf+euL9xvoBXieaPdp6/mT5ggy7Ky+mQSvtbv+0Ui4R6tSWk7G8X8xjctmnnRG8e7f3PDSEtTT4ZepKREzFN+/Bk71Vci01q1Hm5eU/GSxGivOu1Z3/3Rlf996bWuv4EYIK5WalqARZFIiaIRdLAKKjAhACewuvxRMjqoInrRqGLu+CQMCibARIRCE3FEXYdSwhuCOChhsVJHnnkE3n3szCfNzgFeMtb98Op4taUoFJXtGqsvDunzG0ndhagbdULuwEa8DQVdA48kRGR1DGfeOLKSSeIQqtrriBNWXZ6x/+DiOY1g5lU32yLYwyzkvHNedfkVf+iGIKJ1Ck7zYpFW9ShCpj1qYuwVytiLBSsRpTkJDj5hq3TPasYne44RCQChJwzixYxi0KhaRUYJXaJbPX+P8J4js2MXDgK4Y7L6x4fKC8eALMsL7VY83JXfm50tSFxJJls0Djtw7oVuEM0ZqYJ3Lll7cwtpmkTK+lJhJJIUbz54kCC2bLAIVQkxHrBo13e++WRbt857DxqnOMhTel0hlohdxIqxglVgEKsexkZiBZbsVLqz4YQ0RiCdKvY6woMemsB7CFl1ENrlUbMnf3gi/uvUvmMX5iPdeO497WPusAtHC00bibiqtGLN6L8O64LEVcYEhidqewQ/OpJe5cIV7QtWxTTPqjJOlVOpKjGEo+Zni2cXNKpuqSgzxdiTGO09bzn1okuuuuWWB1wzjxYkVuxVRR0g4uueChEKRSlaV38BB/Ysu4bKnTpcDntZZ0iVZe9AdVCDdaSaiJgMxwzbm4/QU/boc5DRMn5lafeLD9hdMZWGT71UFemq2Fnzrp3Sg5p5ILzgiRxX4qdXhlTxQBnfe++keGexBpZrw0mhwPDchYVCAs3VXY4bdX5PtyEiCrG+vvwzH37j81/yHjFfAxViyqi9oSR1OYbCXhgt8Cpxqq4KwdpucuK8cFgTE8ZExCAOmlBFQlfiWEQ7PGPQ3nSAnLIgh8hEsK/f2/mXe6olEwmKzKVANwYnPiurOPGUJt69cEacFsbVtu4JGLjlp3eeepGP3T+5PEjiNFRRbAr6NZCAukNmZrW/29p0SDWE8JxjD3r9WSd+8YsXJzOHKguMTmpDHFVqaYoTaA0z0SqISgRU2KZf2KdnLrBA9VK36SCRGBFbMZvgiQPhDYv02bNzQMbKeOFd3X+9225tpyhSXxhLo3gMlxjo0KCT1Sd2HWqKBCOe8LFOfj0J0yluaoevr+lomlo3wkhjr9uYoEmiNi930xPTLUxvnN4zYGYfft8rfnrZtfcvW+vTLFqFqDWjWUWpjhYgCg1SV8RFIYQ5jepeu3c16KWkU6kUQETF3WI4uQ8vn58c3J8Dsnyy+vqdna/82e6cFORpkosF0kR2EswLTCotJbTj62f3HT/QDIxONnTjT8CwJ18j0CRV5PyV7XEknjSTh5s76hfpBBs0429hHsH0j8zizJkDnzz3tae9/COSFxKNEliXzOvIus5NolKhpkCF1MnYRHrCnnbEnFgFippZZnY04+mpnjyUznAK4JbV5VeXlN/+c3iwo8gSnwsjQyvoXCf7KGY4K4N2JEIXpPahOf0EhEKFQraGyrLjTYeqPFjZD8cCVFAajLCaTESh1Iy5boU13UCkYI0jbM3yEwCqLoR46oue9s0XH/njH1ztZ8yIFkUUjKyLAOIgERIB0FSzzE20pehUrz8khohO2EvkJJXTvR5S5ACCxR/f2b7g5s6ly2RSPfpy1wRp1iKGxO2fYA9nYmhFMYoqWX5wVr6T1wg4xV9kVJmv7YYXuWy8+2DXnPPReqMCQAgFZoz05qvSrnuo+/SdGhvTGzY3S+UR9oT89Llv+M3lt02Wps6ZRcYArQE8FRVHVUGMrbhiZRxZm3zp9fvM6T9movOCxD03TwoIgD+NdL9zS+s/b65uHhHkHgM+ydViMBPtc3KAyr4uFo4BiApvLiKYnVC4M/uLaHQqpAK9SB9bNytqh6i5Xy+OKyYIqEQ+wmL0XsJIUVx46+SbDhxKeiSprRqO28vLncYY995j3tnvPu3d7/63ZOawRRNGtUqcQpJAhFYX7VFg3d5zs+Ne/ZznHX/Qs8wG+goAI+Pld2+f/O4fwxVL42QlKBLfEEkYzWJQ5NRdgu7JsHMiHgyESG2FTMKg2MdnNDwZp1HMtp61v6OMiZgZyCj6zCWjV0zAGawd2TWpIBXZNdQdPpW4YGE8nPv0vnOOmlXG6GoG/CNbHLYwZZMELQbj0c97x/XX35kOz+xWRADKCO+TwcaT99vzOUfvc8KxTzrmsL1EPGBr1oWf3zF58Q0Tv/hTWDXuUaQYSHwBetAldA5pqTMmuUuUOZ7NDI2MfZkkvldajBYmuh9OcXZfI9BcDwLZDmFtD0wazVQwFnn0zSO3lomLZJfoGiqyBzwSFVmaVNQg6FZfOH7oDYfMAFDFoHCbngqwsaDBaNGrv/La24557ttRRjfYv+euCw9fvO8zj97/mMP22nvP+fXB967q/vyWdZfc2L3mrnL5akI8+r3rTyTXmCmzVJyItdgck1ktHVQrEhQZBnMZKKw/1yytmUGhioeX4Vf9WT6FePEvKOi6u2ZNjEffuOqOMlMDOnGqWw1SGUtIaVaZlECkBGeT1WsP8mcfN3vXGen6+r/RZGrkkmx0cjWKYkaSSeK+9f1fIVRPPfxJe+y+S23wRyfj7/645ldXrbz8js5tnb7xCYE6NJ02Ey0SJoi5R1+hGSSss7hMkhHpczaYSaNP+nI0U/anMlCwv0CRqyqJpFtdmuJY7yPEbWp6Nx77EPHt02iwRTnmptV/aKmLiN0oJXoWoyRKIhBdsqSUlCAIsLXlcCGnH5qfsXjgoAV57tyjVMQ2pfQPrKquv230imvXXH3jyG33VaOrgRJYMBOzmj5xULJwVmTsz2Wg0MRkfClHlpitkkEnQ0Psa6CZsZlLf47+HH31kTn6cnVZiNXbYvynIq1I/8SOYN2sjQ5AIvLSP6374Yroo1WlSUmUkIose6ZD6nbM0lCRFVxk7AAtisZ9ZsihC5NDdssW7dxYOKyDhWvmvkhEFdHQ7XKiDOPtsHatLV/Zue+h1t33V3+6Z/zOpRMPrWY5TpSEIzLvEpXhPhnsi16RJmzk2KnhhnOEUX3wVnvgNptciWbKGUMY7JOBJvtzaWbsK7SvwYECzYz9mQwWOlgE9Xt1O1cW+Sw4yA6bK7RdFRYRESOEzxvQHyzrAk4NNOnN46vnvUSaQergmiqkBSigBWInWbKMS/5UfctKuHVeY9OzcJI5cUAIVrZDq111OqFsGVoRlaGeY+EETn0BNAmKmTBLbbAfaYJGgaFc5jd8ulpu/O+w5PrQGmVRcMaAqmo0ixWrCsEjegkR0RAjoomZ1I3dVfywT+eoC7Sa/oS/9OZJqoC0k2c2Ppq1lk5QTWgmRk6L8MQg1it91kPtaRIDYXQJpN+hAiND0LFJjJURwRCImoxvDiaipk0vRsYgjDTQxMy0BlrEy7ydZaBgM2IwuIHVWPabcOUvsGbUikIahTiPGNlrwcwQDZESiUiGiMoQY92mXBlOgpya+mjmetymv/zmASgkQmYm+pE9ijN/v05dg2a0eoZQrdTAw3JnDwYxIEJMrL7aSIlUkErxqClDvbYJkiAjo1k9u0coCqpKFcVaJcro9t3Jdu/DwIRm4zrxAK66Ltx8C0RRZAAZSkQRpg83R3F9p6LBKNGMJmT0fifqeZlq7wweg014XBGPXm+XQqLx5Tv337hHdd4tk87naozR6ngCEYyQWuiRiJRY83IxRdDt9YdZtJ5wp94UA42gCSg1yACNJa1tYJn229FH9Of7DP7Sq+b3y/J7ed2d9qfbbc0qpE6yzIKI82BNPSIJmIkZzGDGEBF6+2pA4i1x73Pcy2nVQ5y3moP8BGg0p+COSH7qwOFBkXP/2ApddVAxxxjMTKIwCowS5WERswZDIFOCRpR6BRAqYq5HyvKsECPZCdYNyOO8ednh+/U/8/ChZx8xtPsu+fM/8b3ystvS5SurkdXsVvBOk8RA1ja3N74TJEgKe6sHwcyiRkM0A7zTqpEfI/LGxEc+CgV0emK15ceM7Kjb4KfDPwIYefYBM54+O3n/NWt+e68hOBBqTmm9+W81Q8VYt1XV0F+dIIoIXN02TRIWGboBbSBGuGp4WA/cNT/moOLpi4cX7zcwPFCX6zje6o7+8kr87vY4NEBVNNIeG2Y6UlK3rkkPzqpjckRDNDHWzRBWZM00+VSaZCrxsQDOTwyM94iZSnU6HYhEhbRLl05865bWr+8pl62OaNUNga7XzB1645VREb3pEaj5KwiEVVA0G5g3Qw/cFYv37V/8pOLAPZtz67oBAKCKVjOuk8Rfc8OSZ7zwfZWkhrK+wB5cmnhJU6QpslQaOfoaVmTaLNhsoNFAI0N/oX0NzuhLdhro7rbT++f0f6SZha1gNG8bVLTjmUrE+oEYHGlVNzzYve6B9q0PVUtXxZG1cWzcqo6wisHoKIloJhws3KwG5wz6hcPp7jvJnvOKPXdO581KimkQNolo7I3SmjrnGM179/6Pf+sfP/TlZOZwqPm+IhQV75EkyOvpegUahRQ5iwzNQpoFm4U0CwwUOmsw7L7zQbvN+vXMvM85edzqJztY0Ovvdt2T7XV6UYWdgFY3dKNZBI2qmnlJEmlkuhGbmABj7GX5optotuk1Ehgn2tWRz/3b2+94wDX7olk9ZZLeaVqPEkqlyFEUzFMUGRqFNAv0NTjQkKE+mTPT7bfwp7sPPDvzgXSPW8n18aCEoaayEDDrlbTqsQu519wnGyXWBoA0I8wEoAhVVCBOoZAtx09GDvRlX/jk3x7/4rONNuWfezzFhwnEZogmkRYjQoQZAHE+zhp+2059z86SwB3TBvF4bPqofkBEnCJxNVFOjDSjGaOh3jGr8xsBREW8g3fiVFVFtEcR3eChERuohncuxHjcMU95w2ufH0fXeu8AoYj0aKoCE/aiRiIaSIUIoUTMk/3n979/MDPWC0r+erT4UQT9KDPoAVVRnepYeLijfRM3bJOPGdnkQ8+cipmd856X777vLrHVdc71rLj1Zt3WMQZjfYdJEIlDkqRzZ356bv+wgtvXB/h4h9j6V3EeQoEYOWvGwOc//laYASqwXmXSIL30j3U4KUZShBpnD7920dzjG0mgqfxVP53rUUzH5pruH1OVfoMpbxsslB53pEcCiSc899AzTntGWLPa+QziQKURZozGOiEEBapOY6PYe6955+wyaIRgu2quT8ATvPQJUNhNlms3eS9VheTH/uHVu+w+L4aomkhdL5h6gQAVquK9Lpj7qf13mqO6QQ/z1sh04+a+xzsLf0KflbV+jM3mElxVNeP8uTPO++hrWLZE6vZbMlJ6UhaIqtfQ1/eKgxacNFREM/cYz+EJEOtfWNBbszmnIcTTTjz6f73s2LC25b0KID0gjoSoavDZXgfv/Yn95hofjdf612yjt2xnt2W23ha1eGN1U6ckz/v7V8ye24ztumWRBkJEvUqS+N12/pdn7D3Hq5EO/zMekKhb6RM2Nyt2ay5y+mrdmmWrQIw2f97wx/7+TJvseJ/DOXEJfOKyLDQabzj+oOfPbNZk+KnZpNsbLP+FneFfBMklAI8Y4mv+5pknvfTocs1YUuQu9WnuylIPXLzogwcvsFjp/6gnfeomne/Wq+oOVJPpBzuqiBjj+R97zVFH7V6uWBEmy3Kse8Dihd8548iZCqjTLSJwj+mnnwD3+BieC/6EbT1yOGCginbK6js/veame1btvc/805978GDqa9Rpm7/5rwW9+ysRdL1jkfoITnZvnu62ifIvKOjH/ODI7Rq//hilQFKVkbBYN22pV9FHqzxtgR7/qLbu8TMg/x9uUSQ4qW8bJAAAAABJRU5ErkJggg==" alt="" width="40" height="30"><span>Veloris ERP | AI</span></a>
+    <div class="links">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#crm-flow">CRM flow</a>
+      <a href="#features">All features</a>
+      <a href="#g-crm">CRM</a>
+      <a href="#g-erp">ERP</a>
+      <a href="#g-ai">AI agents</a>
+      <a href="#g-pl">Platform</a>
+      <a href="#connections">CRM–ERP connections</a>
+      <a href="#flow">End-to-end flow</a>
+      <a href="#trust">Trust &amp; control</a>
+      <a href="#rollout">Rollout</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  </div>
+</nav>
+
+<main>
+  <section class="block" id="overview">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">01</div><div><h2>What CRM and ERP each do — and why they belong together</h2></div>
+        <p>Most companies run customer data and operations data in separate systems. Veloris ERP | AI Software merges them so every team, report and AI agent reads the same record.</p></div>
+
+      <div class="versus">
+        <div class="vcard crm">
+          <h3>CRM — Customer Relationship Management</h3>
+          <p class="q">Answers: who are our customers, what do they want, and how do we win and keep them?</p>
+          <ul>
+            <li>One trusted record and full history for every customer (Customer 360)</li>
+            <li>Leads, pipeline, deals, quotes and sales orders</li>
+            <li>Contracts, subscriptions, loyalty and engagement</li>
+            <li>Support cases, omnichannel service, field service and warranty</li>
+          </ul>
+        </div>
+        <div class="vcard erp">
+          <h3>ERP — Enterprise Resource Planning</h3>
+          <p class="q">Answers: how do we buy, make, store, ship, pay, account for and staff all of it?</p>
+          <ul>
+            <li>Finance, accounting, planning and financial close</li>
+            <li>Procurement, supply chain, warehouse and logistics</li>
+            <li>Product engineering, manufacturing, quality and assets</li>
+            <li>People (HCM), projects, safety &amp; compliance, retail POS</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="why">
+        <h3>The problem the merge solves</h3>
+        <div class="row">
+          <div><b>Data lives in silos</b>Customer, order, invoice and inventory records get copied across tools and quietly drift out of sync.</div>
+          <div><b>Teams work blind</b>A sales rep can't see an order stuck in the warehouse; finance can't see why a customer is upset.</div>
+          <div><b>AI stays shallow</b>An assistant plugged into only CRM or only ERP can never give a complete, trustworthy answer.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="architecture">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">02</div><div><h2>One shared foundation, four layers</h2></div>
+        <p>Every screen, report and AI agent reads and writes to the same foundation. Nothing is duplicated, so a change in one place shows up correctly everywhere else.</p></div>
+      <div class="layers">
+        <div class="layer l4"><div class="ln">Layer 4</div><div><h4>People &amp; channels</h4><p>Sales and service teams, finance and ops teams, customers and suppliers — working through web, mobile, voice and chat.</p></div></div>
+        <div class="layer l3"><div class="ln">Layer 3</div><div><h4>AI agent workforce</h4><p>16 governed agents and controls for sales, service, finance, retention, pricing and compliance — each acting only within approved limits, always logged.</p></div></div>
+        <div class="layer l2"><div class="ln">Layer 2</div><div><h4>Business modules</h4><p>21 CRM and ERP modules — from Customer 360 and Sales to Finance, Manufacturing, HCM, EHS and Retail.</p></div></div>
+        <div class="layer l1"><div class="ln">Layer 1</div><div><h4>Platform foundation</h4><p>One shared record of every customer, order, product, asset and employee — plus identity, security, permissions, workflow and an unchangeable audit trail.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block ct" id="crm-flow">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">03</div><div><h2>CRM at a glance</h2></div>
+        <p>Every CRM module and the features under it, from first contact to loyal customer — all on the same shared customer record.</p></div>
+      <div class="ct-root">
+        <div class="ct-rootnode"><h3>CRM</h3><p>Customer Relationship Management · 5 modules · 22 features</p></div>
+        <div class="ct-stem" aria-hidden="true"></div>
+      </div>
+      <div class="ct-branches" id="crmTree"></div>
+    </div>
+  </section>
+
+  <section class="block" id="features">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">04</div><div><h2>Complete feature catalogue</h2></div>
+        <p>All 155 features, grouped into CRM, ERP, AI and Platform. Search for any feature or filter by side.</p></div>
+
+      <div class="toolbar">
+        <div class="search"><label for="q" class="sr" style="position:absolute;left:-9999px">Search features</label>
+          <input id="q" type="search" placeholder="Search features, e.g. invoice, payroll, warranty…" autocomplete="off"></div>
+        <div class="filters" role="group" aria-label="Filter by side">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="crm" aria-pressed="false">CRM</button>
+          <button type="button" data-f="erp" aria-pressed="false">ERP</button>
+          <button type="button" data-f="ai" aria-pressed="false">AI</button>
+          <button type="button" data-f="pl" aria-pressed="false">Platform</button>
+        </div>
+      </div>
+      <div class="result-note" id="note" aria-live="polite"></div>
+      <div id="catalogue"></div>
+    </div>
+  </section>
+
+  <section class="block" id="connections">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">05</div><div><h2>How CRM and ERP connect</h2></div>
+        <p>The real value of one platform is the handoff. These are the main journeys where work starts on one side and finishes on the other — on the same record, with nothing re-keyed.</p></div>
+      <div class="cx-legend"><span><i style="background:var(--crm)"></i>CRM step</span><span><i style="background:var(--erp)"></i>ERP step</span><span><i style="background:linear-gradient(90deg,var(--crm),var(--erp))"></i>Handoff point</span></div>
+      <div id="cxList"></div>
+    </div>
+  </section>
+
+  <section class="block" id="flow">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">06</div><div><h2>One customer message, traced end to end</h2></div>
+        <p>A customer emails about a late order. This is where CRM, ERP and AI meet — and where a human stays in control.</p></div>
+      <div class="flow">
+        <div class="step"><div class="n">Step 1</div><h4>Customer emails</h4><p>"Where's my order?" arrives through Omnichannel Support.</p></div>
+        <div class="step ai"><div class="n">Step 2 · AI</div><h4>Copilot reads the record</h4><p>It opens the unified customer record and creates a service case.</p></div>
+        <div class="step ai"><div class="n">Step 3 · AI</div><h4>Service Agent checks status</h4><p>It looks at the sales order, warehouse picking and shipment — same data, live.</p></div>
+        <div class="step"><div class="n">Step 4</div><h4>Decision</h4><p>Autonomy Controls decide whether the agent can act alone or needs a person.</p></div>
+      </div>
+      <div class="branch">
+        <div class="ok"><b>Within authority</b><span>The agent resolves it directly and sends the customer a real, accurate update.</span></div>
+        <div class="hu"><b>Needs judgement</b><span>It is routed to a human agent with the full context — order, shipment, history — already attached.</span></div>
+      </div>
+      <div class="audit">Every step is written to the Immutable Audit Trail: who or what did it, when, and why.</div>
+    </div>
+  </section>
+
+  <section class="block" id="trust">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">07</div><div><h2>Trust &amp; control for AI agents</h2></div>
+        <p>The more an agent can do, the more tightly it is governed. These controls apply to every agent, every time.</p></div>
+      <div class="guards">
+        <div class="guard"><h4>Identity &amp; access control</h4><p>Every person and every agent has a defined role and sees only what that role permits.</p></div>
+        <div class="guard"><h4>Approval gates</h4><p>Anything above an agent's authority — a discount, a refund, a commitment — waits for a human.</p></div>
+        <div class="guard"><h4>Immutable audit trail</h4><p>Every action, human or AI, is permanently logged with its reasoning attached.</p></div>
+        <div class="guard"><h4>Consent &amp; privacy</h4><p>Customer consent is tracked at its source and respected wherever the data travels.</p></div>
+        <div class="guard"><h4>Encryption &amp; key management</h4><p>Data is encrypted at rest and in transit to enterprise security standards.</p></div>
+        <div class="guard"><h4>AI explainability</h4><p>Every AI decision can be traced back to the data and policy that produced it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="rollout">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">08</div><div><h2>A staged rollout, not a big-bang switch</h2></div>
+        <p>A phased approach proves value early and keeps risk low.</p></div>
+      <div class="phases">
+        <div class="phase"><div class="n">1</div><h4>Unify the customer record</h4><p>Merge identity, consent and relationship data. Stand up the Copilot and core sales and service agents.</p><div class="mods"><b>Modules:</b> Customer 360, Leads, Sales, Customer Service, Copilot, SDR, Deal, Service agents</div></div>
+        <div class="phase"><div class="n">2</div><h4>Connect finance &amp; operations</h4><p>Bring in the ledger, orders, inventory and procurement so agents act on real operational data.</p><div class="mods"><b>Modules:</b> Finance, Procurement, Supply Chain, Warehouse, Sales &amp; Distribution</div></div>
+        <div class="phase"><div class="n">3</div><h4>Scale the agent workforce</h4><p>Turn on the remaining agents, planning and forecasting, and full governance across every module.</p><div class="mods"><b>Modules:</b> EPM, Manufacturing, HCM, Projects, EHS, Retail, remaining agents</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="glossary">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">09</div><div><h2>Glossary of terms</h2></div>
+        <p>Short meanings of the abbreviations used in this guide.</p></div>
+      <dl class="gloss">
+        <div><dt>CRM</dt><dd>Customer Relationship Management — systems for sales, service and customer data.</dd></div>
+        <div><dt>ERP</dt><dd>Enterprise Resource Planning — systems for finance, supply chain, manufacturing, HR.</dd></div>
+        <div><dt>CPQ</dt><dd>Configure, Price, Quote — building accurate quotes from products and price rules.</dd></div>
+        <div><dt>SLA</dt><dd>Service Level Agreement — the promised response or resolution time.</dd></div>
+        <div><dt>CSAT</dt><dd>Customer Satisfaction score, usually from a short survey.</dd></div>
+        <div><dt>GL</dt><dd>General Ledger — the main set of accounting books.</dd></div>
+        <div><dt>AP / AR</dt><dd>Accounts Payable (what you owe) / Accounts Receivable (what you're owed).</dd></div>
+        <div><dt>EPM</dt><dd>Enterprise Performance Management — planning, budgeting, forecasting and close.</dd></div>
+        <div><dt>BOM</dt><dd>Bill of Materials — the components needed to make a product.</dd></div>
+        <div><dt>CAPA</dt><dd>Corrective And Preventive Action — fixing a problem and stopping it recurring.</dd></div>
+        <div><dt>HCM</dt><dd>Human Capital Management — HR, payroll, recruiting and workforce.</dd></div>
+        <div><dt>EHS</dt><dd>Environment, Health &amp; Safety.</dd></div>
+        <div><dt>POS / mPOS</dt><dd>Point of Sale / mobile Point of Sale for retail checkout.</dd></div>
+        <div><dt>EDI</dt><dd>Electronic Data Interchange — standard machine-to-machine business documents.</dd></div>
+        <div><dt>DLP</dt><dd>Data Loss Prevention — controls that stop sensitive data leaking.</dd></div>
+      </dl>
+    </div>
+  </section>
+  <section class="block" id="pricing">
+    <div class="wrap">
+      <div class="sec-head"><div class="sec-no">10</div><div><h2>Pricing</h2></div>
+        <p>CRM and ERP can each be built on their own, or together as one connected platform. Each is available in two delivery models: a SaaS platform you can run for many companies, or a one-time build for your own business.</p></div>
+
+      <div class="pr-models">
+        <div class="pm saas">
+          <span class="badge">SaaS based</span>
+          <h3>With SaaS</h3>
+          <p class="who">For running the platform as a product for many companies.</p>
+          <ul>
+            <li>Multi-tenant architecture — one platform serves many companies</li>
+            <li>Each company's data fully isolated at the data-access layer</li>
+            <li>Super Admin console to create and manage tenant companies</li>
+            <li>Turn modules and features on or off per tenant</li>
+            <li>Option of a dedicated single-tenant deployment for large clients</li>
+          </ul>
+        </div>
+        <div class="pm">
+          <span class="badge alt">Without SaaS</span>
+          <h3>Without SaaS</h3>
+          <p class="who">A one-time software build for a single business's own use.</p>
+          <ul>
+            <li>Complete modules and features for your own company</li>
+            <li>Single-company setup — no tenant management layer</li>
+            <li>Same AI agents, security and audit trail</li>
+            <li>Lower cost; can be upgraded to SaaS later</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pr-grid">
+        <div class="pc crm">
+          <h3>CRM</h3>
+          <p class="scope">5 modules · 22 features — sell &amp; serve</p>
+          <div class="price s"><div class="lbl">With SaaS</div><div class="amt">$12k<small>one-time</small></div></div>
+          <div class="price n"><div class="lbl">Without SaaS</div><div class="amt">$9k<small>one-time</small></div></div>
+          <ul>
+            <li><b>Customer 360</b> — unified record, timeline, consent</li>
+            <li><b>Leads &amp; Sales</b> — pipeline, CPQ, orders, contracts</li>
+            <li><b>Customer Experience</b> — engagement &amp; loyalty</li>
+            <li><b>Customer Service</b> — cases, omnichannel, field service, warranty</li>
+          </ul>
+        </div>
+
+        <div class="pc erp">
+          <h3>ERP</h3>
+          <p class="scope">16 modules · 95 features — run &amp; deliver</p>
+          <div class="price s"><div class="lbl">With SaaS</div><div class="amt">$40k<small>one-time</small></div></div>
+          <div class="price n"><div class="lbl">Without SaaS</div><div class="amt">$25k<small>one-time</small></div></div>
+          <ul>
+            <li><b>Finance &amp; Planning</b> — ledger, AP/AR, tax, EPM</li>
+            <li><b>Supply Chain</b> — procurement, inventory, warehouse, logistics</li>
+            <li><b>Manufacturing</b> — product, production, quality</li>
+            <li><b>Order-to-Cash, Assets, Projects, People, EHS, Retail</b></li>
+          </ul>
+        </div>
+
+        <div class="pc both">
+          <span class="flag">Built together</span>
+          <h3>CRM + ERP</h3>
+          <p class="scope">Developed together as one platform · 21 modules · 117 business features</p>
+          <div class="price s"><div class="lbl">With SaaS</div><div class="amt">$52k<small>one-time</small></div><div class="sum">CRM $12k + ERP $40k</div></div>
+          <div class="price n"><div class="lbl">Without SaaS</div><div class="amt">$34k<small>one-time</small></div><div class="sum">CRM $9k + ERP $25k</div></div>
+          <ul>
+            <li><b>One shared customer &amp; business record</b> across sales, service, finance and operations</li>
+            <li><b>All CRM–ERP handoffs</b> — lead to cash, contract to revenue, service to asset</li>
+            <li><b>16 AI agents</b> working across both sides</li>
+            <li><b>Platform foundation</b> — security, workflow, analytics, integrations, audit trail</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pr-table">
+        <table>
+          <thead><tr><th>Package</th><th>Without SaaS</th><th>With SaaS</th></tr></thead>
+          <tbody>
+            <tr><td>CRM</td><td class="num">$9,000</td><td class="num">$12,000</td></tr>
+            <tr><td>ERP</td><td class="num">$25,000</td><td class="num">$40,000</td></tr>
+            <tr><td>CRM + ERP (built together)</td><td class="num">$34,000</td><td class="num">$52,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="pr-note">All prices are one-time development costs in USD. Final pricing is confirmed after a scoping call on modules, integrations and deployment.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><b>Veloris ERP | AI Software</b> — The AI Core of Global Finance. CRM + ERP Feature Guide · 155 features · 23 modules · 16 AI agents &amp; controls.</div>
+</footer>
+
+<script>
+const DATA = [
+/* ================= CRM ================= */
+{g:'crm', id:'customer360', name:'Customer 360', tag:'CRM · Core',
+ intro:'The heart of the CRM side: one trusted record for every person, company and household the business deals with — shared by sales, finance, service and delivery.',
+ connects:'Every other module, Consent & Privacy Controls, Data Steward Agent',
+ f:[
+ ['Unified Customer Records','Every person, company, household or enterprise account lives as one record. Sales, finance, service and delivery all use it, so nobody works from an old copy or enters the same customer twice.'],
+ ['Customer Timeline & Memory','A running, time-ordered history of every interaction — calls, emails, orders, cases. Each fact is tagged with where it came from, when it was captured and how confident the system is in it, so people and AI know what to trust.'],
+ ['Relationship Mapping','Maps how people connect to companies, to each other and to deals. Instead of a flat contact list you see who influences whom and who actually makes decisions inside an account.'],
+ ['Duplicate & Identity Matching','Finds the same person or company appearing under different names, emails or channels and reconciles them into one — using both exact matching and approximate (fuzzy) matching.'],
+ ['Consent Management','A central log of what each customer has agreed to and why. That permission travels with their data, so every module and agent respects it automatically.']
+ ]},
+{g:'crm', id:'leads', name:'Lead Management', tag:'CRM · Sales',
+ intro:'Turns first contact into a qualified, correctly assigned opportunity — without losing any prospect along the way.',
+ connects:'Customer 360, Sales, SDR Agent',
+ f:[
+ ['Conversational Lead Capture','Captures leads straight from natural conversation on web chat, email, SMS or voice. Prospects are not forced through a rigid form first — the details are picked up from what they say.'],
+ ['Lead Scoring & Routing','Each incoming lead is scored, enriched with extra data and qualified, then sent to the right owner. AI can assist, but a person stays in control of the final outcome.'],
+ ['Lead Conversion Mapping','Converts a qualified lead into a contact, an organisation and a deal in one step. Configurable field mapping decides where each piece of data goes, so nothing is lost.']
+ ]},
+{g:'crm', id:'sales', name:'Sales', tag:'CRM · Sales',
+ intro:'The full commercial motion from open pipeline to signed order, contract and renewal.',
+ connects:'Finance (AR, Revenue Recognition), Supply Chain, Sales & Distribution, Deal / Quote / Negotiation / Pricing agents',
+ f:[
+ ['Sales Pipeline Management','Configure your own pipelines, stages and win-probabilities. Deal values roll up automatically into a live forecast, built on the same customer and deal records as the rest of the platform.'],
+ ['Opportunity Management','One place for a deal\'s value, products or services, pricing, activity history, risk flags and forecast category. A won deal hands off cleanly into finance and delivery.'],
+ ['Sales Engagement & Sequencing','Outreach sequences, playbooks, a shared inbox and follow-up tracking keep the team consistent. AI can help, but only inside policy limits a manager sets.'],
+ ['Quoting & Pricing (CPQ)','Builds quotes from configured products, price books, tax rules and commercial terms. Every quote passes through built-in approval routing before it goes to the customer.'],
+ ['Sales Order Management','Creates and approves sales orders and reserves stock against them. Orders flow directly into inventory and fulfilment, so nothing gets re-keyed.'],
+ ['Contracts & Subscriptions','Contracts and recurring subscriptions — renewals, terms and entitlements — are managed as proper, trackable commercial records, not loose attachments.']
+ ]},
+{g:'crm', id:'cx', name:'Customer Experience', tag:'CRM · Marketing',
+ intro:'Keeps customers engaged and loyal after the sale closes.',
+ connects:'Customer 360, Retention Agent',
+ f:[
+ ['Engagement & Loyalty','Runs engagement campaigns, offers and loyalty programmes. It uses the platform\'s own customer intelligence — history, value, behaviour — to suggest the next best action for each customer.']
+ ]},
+{g:'crm', id:'service', name:'Customer Service', tag:'CRM · Service',
+ intro:'Support that resolves issues fast and remembers every customer\'s history — including field visits, warranty cover and repairs.',
+ connects:'Customer 360, Asset Management, Knowledge Base, Service Agent, Knowledge Agent',
+ f:[
+ ['Case Management','Every customer or internal issue becomes a case with priority, SLA timer, status, resolution notes, sentiment and root cause — all in one record.'],
+ ['Omnichannel Support','Email, live chat, web forms and voice become one centralised conversation and case history. Customers also get a self-service portal to check progress themselves.'],
+ ['Knowledge Base','A governed library of FAQs, policies, procedures and resolution articles. Each carries its source and confidence, and both human agents and AI use it.'],
+ ['Customer Satisfaction Tracking','Captures a satisfaction (CSAT) score after every resolved case and rolls it into service analytics, linked to that customer\'s full history.'],
+ ['Field Service Management','Schedules and dispatches on-site service orders. Technicians work from mobile, and customers can follow progress on a service portal.'],
+ ['Warranty & Entitlements','Manages service contracts, warranty terms and entitlements, and routes each request automatically according to what the customer is actually covered for.'],
+ ['Depot Repair & Returns','Runs the repair-and-return process end to end, and writes the outcome back into the history of the specific asset that was repaired.']
+ ]},
+
+/* ================= ERP ================= */
+{g:'erp', id:'finance', name:'Finance', tag:'ERP · Finance',
+ intro:'The financial backbone — one ledger, every book, every currency — fed automatically by business events from across the platform.',
+ connects:'Sales, Procurement, Asset Management, HCM (payroll), Projects, EPM',
+ f:[
+ ['Multi-Dimensional Chart of Accounts','One configurable chart of accounts and hierarchy that supports multiple legal entities, fiscal calendars and functional currencies from a single setup.'],
+ ['Parallel Books of Record','A single business event updates local, group, tax and management books at the same time. Each book stays governed and consistent with no duplicate entry.'],
+ ['Journal Controls & Audit Linkage','Journals must balance and go through approval routing; corrections happen only by controlled reversal. A posted journal is never edited directly and always links back to its source.'],
+ ['Rule-Driven Subledger Accounting','Accounting entries are generated automatically from business events (invoices, shipments, payments) using configurable rules, and each stays traceable to its transaction.'],
+ ['Accounts Payable','Supplier invoices move from receipt through verification, approval and payment — connected to procurement and the supplier record.'],
+ ['Accounts Receivable','Customer billing, receivables, collections and running balances, connected to the same CRM and order records used everywhere else.'],
+ ['Fixed Asset Accounting','Capitalisation, depreciation schedules, transfers and retirement of assets, linked to the underlying physical asset record.'],
+ ['Lease Accounting','Manages the full lease lifecycle and its accounting treatment, integrated with asset and finance records.'],
+ ['Treasury & Cash Management','Centralises bank, cash and treasury operations for one clear view of liquidity across the business.'],
+ ['Revenue Recognition','Recognises revenue in step with the actual contract, order and billing activity — not as a disconnected finance-only exercise.'],
+ ['Tax Calculation & Reporting','Calculates and reports tax with jurisdiction-aware rules; every calculation can be audited back to its source transaction.'],
+ ['Expense Management','Employees capture expenses on their phone; receipts are read automatically, spend and mileage categorised, and every claim checked against policy with anomalies flagged.'],
+ ['Intercompany Transactions','Automates transactions between group companies — matching, netting and settlement — keeping each elimination traceable to where it started.']
+ ]},
+{g:'erp', id:'mgmtacc', name:'Management Accounting', tag:'ERP · Finance',
+ intro:'Shows where cost and profit really come from, using live operational data instead of spreadsheets.',
+ connects:'Finance, Manufacturing, Supply Chain, EPM',
+ f:[
+ ['Cost & Profit Centers','Defines cost centers, profit centers, internal orders and cost elements on one shared model, so every cost and profit has a clear owner.'],
+ ['Product Costing & Profitability','Calculates what each product costs and earns, connected directly to manufacturing and inventory data.'],
+ ['Activity-Based Costing','Allocates overhead by actual drivers and activities, with every allocated amount traceable back to its origin.']
+ ]},
+{g:'erp', id:'epm', name:'Enterprise Performance (EPM)', tag:'ERP · Planning',
+ intro:'Planning, forecasting and closing the books on one connected model, so plans and actuals always agree.',
+ connects:'Finance, Management Accounting, HCM, Sales, Supply Chain, Forecast Agent',
+ f:[
+ ['Integrated Planning & Budgeting','One connected planning model for finance, workforce, sales, supply, capital and project plans — replacing separate spreadsheets that never quite agree.'],
+ ['Driver-Based Planning','Plans are built from operational drivers (volumes, prices, headcount) and how they link to results, so you see why a number moves, not just that it moved.'],
+ ['Scenario Planning','Planners branch off personal or team "what-if" scenarios. Nothing touches the shared plan until someone deliberately merges it in.'],
+ ['Rolling Forecast','The forecast rolls forward automatically. Manual overrides are recorded with who made them and why, next to the machine-generated number.'],
+ ['Financial Consolidation','Consolidates entities with ownership, minority interest, currency translation and eliminations handled automatically, under multiple accounting standards.'],
+ ['Close Management','Orchestrates period-end close and keeps reconciliations running continuously against the subledgers, instead of a once-a-month scramble.'],
+ ['Narrative & Disclosure Reporting','Produces narrative and disclosure reports on the same governed metrics and data lineage as every other report.'],
+ ['Enterprise Profitability Analysis','Analyses profitability and allocation across the enterprise from the underlying management accounting data.'],
+ ['High-Speed Calculation Engine','A shared, high-performance calculation layer for large multidimensional models, used by both planning and reporting so the numbers always match.']
+ ]},
+{g:'erp', id:'procurement', name:'Procurement', tag:'ERP · Supply',
+ intro:'Buying well, from the first requisition to supplier performance.',
+ connects:'Finance (AP), Supply Chain, Warehouse, Projects',
+ f:[
+ ['Purchase Requisitions','Internal requests to buy route through approval, linked to the employee, project or inventory need that triggered them.'],
+ ['Purchase Order Management','Issues purchase orders, records receipts and manages the supplier order lifecycle end to end, connected to payables and inventory.'],
+ ['Strategic Sourcing','Runs sourcing events, bids and tenders, and supports structured supplier selection using governed supplier data.'],
+ ['Procurement Contracts','Tracks supplier contracts and the obligations tied to them, connected to both supplier and finance records.'],
+ ['Supplier Management','Supplier onboarding, qualification and ongoing performance, managed from one central supplier profile.'],
+ ['Spend Analytics','Analyses spending patterns and surfaces procurement insight using the same governed metrics as the rest of the platform.']
+ ]},
+{g:'erp', id:'supply', name:'Supply Chain', tag:'ERP · Supply',
+ intro:'Knowing what\'s needed, where, and when.',
+ connects:'Sales, Procurement, Manufacturing, Warehouse, Inventory Agent',
+ f:[
+ ['Multi-Location Inventory','Tracks stock, valuation and status across all locations, updated in real time by sales, warehouse and manufacturing activity.'],
+ ['Demand Planning','Forecasts and plans future demand, with AI able to assist the forecasting process.'],
+ ['Supply Planning & Replenishment','Plans supply and replenishment in step with procurement and manufacturing capacity.'],
+ ['Order Promising','Gives customers realistic availability and delivery dates using live inventory and supply constraints, not a fixed lead-time guess.']
+ ]},
+{g:'erp', id:'pe', name:'Product Engineering', tag:'ERP · Manufacturing',
+ intro:'Defines the product accurately before it is built.',
+ connects:'Manufacturing, Quality, Management Accounting',
+ f:[
+ ['Product Lifecycle Management','One master definition of each product and its lifecycle stage, used consistently by every function that touches it.'],
+ ['Bill of Materials','The list of components and quantities that make up a product, connected directly to manufacturing and product costing.'],
+ ['Routing & Work Centers','Defines the sequence of operations and the work centers where they happen, connected to production planning.'],
+ ['Engineering Change Management','Product changes follow a version-controlled change process, so what\'s being built always matches the latest approved design.'],
+ ['Product Compliance & Traceability','Tracks product compliance and traceability, connected to quality and regulatory data.']
+ ]},
+{g:'erp', id:'mfg', name:'Manufacturing', tag:'ERP · Manufacturing',
+ intro:'Planning and running production on the shop floor.',
+ connects:'Product Engineering, Supply Chain, Quality, Management Accounting',
+ f:[
+ ['Production Planning & Scheduling','Plans and schedules production based on demand, available capacity and material availability.'],
+ ['Capacity Planning','Shows capacity and constraints, connected to work centers and resource availability.'],
+ ['Shop-Floor Control','Controls and tracks execution on the shop floor as production actually happens.'],
+ ['Process & Batch Manufacturing','Supports process and batch manufacturing with full traceability of what went into every batch.'],
+ ['Manufacturing Analytics','Reports manufacturing performance on the platform\'s governed metrics, not an offline spreadsheet.']
+ ]},
+{g:'erp', id:'quality', name:'Quality', tag:'ERP · Manufacturing',
+ intro:'Catching problems early — and proving they were fixed.',
+ connects:'Product Engineering, Manufacturing, Procurement, Warehouse',
+ f:[
+ ['Quality & Inspection Planning','Plans quality checks and inspections alongside product and process design.'],
+ ['Inspection & Acceptance','Records inspection results and accept/reject decisions, linked to the exact batch or lot they apply to.'],
+ ['Non-Conformance & CAPA','Tracks defects through corrective and preventive action, keeping evidence of the fix and of whether it actually worked.'],
+ ['Quality Audit Management','Manages quality audits with supporting evidence attached to each one.'],
+ ['Certificates & Traceability','Issues and tracks certificates connected to the supplier, product and lot records they cover.']
+ ]},
+{g:'erp', id:'warehouse', name:'Warehouse', tag:'ERP · Supply',
+ intro:'Getting goods in, stored correctly, and out again.',
+ connects:'Procurement, Quality, Sales & Distribution, Logistics',
+ f:[
+ ['Warehouse & Location Control','Defines warehouse structure, storage locations and inventory controls across many warehouses on one shared inventory model.'],
+ ['Receiving & Put-Away','Manages inbound goods and where they are stored, linked to the purchase order and any required quality check.'],
+ ['Picking & Packing','Runs picking, wave management and packing in step with sales fulfilment demand.'],
+ ['Mobile Warehouse Execution','Warehouse tasks run on handheld devices, with offline-first support where connectivity is weak.']
+ ]},
+{g:'erp', id:'logistics', name:'Logistics', tag:'ERP · Supply',
+ intro:'Moving goods efficiently from source to destination.',
+ connects:'Sales & Distribution, Warehouse, Finance',
+ f:[
+ ['Freight & Carrier Planning','Plans freight, manages carriers and handles rating and tendering, connected to the orders and shipments behind them.'],
+ ['Shipment Execution & Settlement','Tracks and executes shipments and manages freight settlement and claims from one shipment record.'],
+ ['Route Optimization','Optimises transport routes and shares the resulting ETAs and routing decisions with other teams.']
+ ]},
+{g:'erp', id:'sd', name:'Sales & Distribution', tag:'ERP · Order-to-cash',
+ intro:'Order-to-cash for physical goods, end to end — the ERP counterpart to the CRM sales module.',
+ connects:'Customer 360, Sales, Warehouse, Logistics, Finance (AR, Revenue Recognition)',
+ f:[
+ ['Customer Master & Credit','Customer master data, hierarchy, credit terms and risk profile, built on the same customer identity used by CRM.'],
+ ['Order Capture & Fulfillment','Captures orders with pricing and availability checks and passes them through to inventory and logistics.'],
+ ['Shipping & Delivery','Executes shipping and delivery, connected to warehouse and transportation.'],
+ ['Billing & Invoicing','Connects billing to receivables and revenue recognition, so a shipped order flows straight into an accurate invoice.'],
+ ['Rebates & Incentives','Manages rebate and incentive programmes linked to actual sales performance.']
+ ]},
+{g:'erp', id:'assets', name:'Asset Management', tag:'ERP · Operations',
+ intro:'Keeping physical assets running and properly accounted for.',
+ connects:'Finance (Fixed Assets), Customer Service (field, warranty, repair)',
+ f:[
+ ['Asset Lifecycle & Installed Base','Tracks each asset from acquisition to retirement, its hierarchy and the installed base at customer sites, linked to finance, maintenance and service.'],
+ ['Preventive & Predictive Maintenance','Plans scheduled maintenance, and predictive maintenance using condition and telemetry data where available.'],
+ ['Maintenance Work Orders','Creates and executes maintenance work orders, connected to parts, labour and the asset\'s own history.'],
+ ['Reliability & Condition Monitoring','Monitors asset reliability and current condition using the platform\'s maintenance intelligence.'],
+ ['Telemetry Integration','Feeds live sensor and condition data from equipment into the asset record for smarter maintenance decisions.']
+ ]},
+{g:'erp', id:'hcm', name:'HCM (People)', tag:'ERP · People',
+ intro:'Supporting the people who run the business, from hire to exit.',
+ connects:'Finance (payroll), Projects (resources), EPM (workforce plans), Identity & Access',
+ f:[
+ ['Worker Lifecycle Management','Tracks personnel and organisational changes — joining, transfers, promotions, exits — connected to identity and approval workflows.'],
+ ['Time & Attendance','Captures attendance and working time with approvals, including mobile capture in the field.'],
+ ['Payroll & Compensation','Processes payroll and compensation, integrated directly with finance.'],
+ ['Recruiting & Onboarding','Runs hiring and onboarding, flowing straight into the worker lifecycle once someone joins.'],
+ ['Benefits Administration','Administers employee benefits from one central worker record.'],
+ ['Learning & Development','Manages training and workforce development, connected to employee skills data.'],
+ ['Workforce Planning','Plans headcount by position using live position, cost and vacancy data rather than a static file.']
+ ]},
+{g:'erp', id:'projects', name:'Projects', tag:'ERP · Projects',
+ intro:'Delivering client and internal work on time and on budget.',
+ connects:'HCM, Finance, Procurement, Revenue Recognition',
+ f:[
+ ['Project Planning','Work breakdown structure, phases, tasks, dependencies, milestones and baselines, in a delivery-friendly interface backed by real project controls.'],
+ ['Project Costing','Captures project cost from time, expenses, payables, procurement, inventory and manufacturing, using actual and fully burdened rates.'],
+ ['Project Billing','Bills under time-and-materials, fixed-price, milestone, cost-plus, unit-rate, percentage-completion or retainage models, connected to revenue recognition.'],
+ ['Earned Value & Project Control','Tracks earned value, schedule and cost performance, estimate-at-completion and variances — showing a machine estimate next to the project manager\'s own.'],
+ ['Resource Management','Handles resource requests, availability, skills matching, booking and utilisation, connected to HCM workforce data.']
+ ]},
+{g:'erp', id:'ehs', name:'EHS (Environment, Health & Safety)', tag:'ERP · Compliance',
+ intro:'Keeping people, sites and the environment safe and compliant.',
+ connects:'Asset Management, HCM, Compliance Guardian, Immutable Audit Trail',
+ f:[
+ ['Safety Management','Manages safety permits and inspections with site, asset and workforce context attached.'],
+ ['Incident Management','Captures, investigates and tracks corrective action on incidents, preserving evidence and clear ownership.'],
+ ['Risk Assessment','Assesses risks and their controls, with mandatory review at set intervals or whenever conditions change.'],
+ ['Hazardous Substance Tracking','Tracks chemical inventory, safety data sheets and compatibility rules, enforced by location.'],
+ ['Occupational Health Records','Records exposure, medical exams and fitness-for-work status, with access kept separate and restricted.'],
+ ['Environmental Monitoring','Monitors emissions, discharge, waste, energy and water use, feeding directly into compliance disclosures.'],
+ ['Compliance Calendar & CAPA','A compliance calendar with audit evidence, e-signature and corrective-action tracking, all in an unchangeable audit trail.']
+ ]},
+{g:'erp', id:'retail', name:'Retail & Edge', tag:'ERP · Retail',
+ intro:'Point-of-sale and in-store commerce that keeps working online or offline.',
+ connects:'Sales, Supply Chain, Finance (ledger), Customer 360',
+ f:[
+ ['Point of Sale','The core retail transaction engine and checkout-lane operations, connected to sales, inventory and the ledger.'],
+ ['Self-Checkout','Self-checkout using the same transaction model as every other sales channel.'],
+ ['Mobile Point of Sale','Runs sales from a mobile device for staff working the floor or off-site.'],
+ ['Kiosk Transactions','Kiosk-based transactions against the same shared product, pricing and customer data.'],
+ ['Scan & Go','Customers scan items as they shop, connected to inventory and payment.'],
+ ['Offline Retail Autonomy','Keeps transactions processing without connectivity, then syncs and reconciles once back online.'],
+ ['Payment Processing','Processes payments with card data kept in its own isolated, compliant scope.'],
+ ['Fiscalisation & Compliance','Handles fiscal receipt and retail compliance rules that vary by country or state.'],
+ ['Hospitality Operations','A hospitality profile and back-of-house operations on the same shared retail engine.']
+ ]},
+
+/* ================= AI ================= */
+{g:'ai', id:'ai', name:'AI & Agents', tag:'AI · Workforce',
+ intro:'A governed team of AI agents that work across both CRM and ERP alongside your people. Each has one job, a defined authority, and every action is logged. The last two items are the controls that govern all the others.',
+ connects:'All modules, Autonomy & Approval Controls, AI Governance, Immutable Audit Trail',
+ f:[
+ ['Conversational Copilot','A natural-language assistant that answers questions and takes actions using the platform\'s real, governed data — not a guess dressed up as an answer.'],
+ ['SDR Agent','Qualifies inbound and outbound leads, enriches their data, scores and routes them, and books meetings straight onto a calendar.'],
+ ['Deal Agent','Chases follow-ups, suggests next steps and revives deals that have gone quiet, while mapping who else needs to be involved.'],
+ ['Negotiation Agent','Negotiates within pre-approved pricing, discount, payment and contract limits, escalating anything outside them to a person.'],
+ ['Quote Agent','Drafts quotes and orders automatically and routes them for the right approval before anything goes out.'],
+ ['Service Agent','Diagnoses, resolves and escalates support cases proactively, using case history, knowledge articles, asset data and entitlements together.'],
+ ['Retention Agent','Spots early signs of churn risk and runs an approved save-play to keep the customer.'],
+ ['Pricing Agent','Recommends prices and discounts within margin and policy limits set by the business.'],
+ ['Forecast Agent','Produces revenue and operational forecasts with scenarios, showing its reasoning and uncertainty rather than a bare number.'],
+ ['Inventory Agent','Predicts stock-outs and reorder points and recommends action, using combined demand and supply data.'],
+ ['Data Steward Agent','Finds duplicate, missing or anomalous data and manages the clean-up — with human approval before anything destructive.'],
+ ['Compliance Guardian','Monitors continuously for policy and compliance issues and prepares evidence ahead of time, instead of scrambling during an audit.'],
+ ['Meeting Agent','Transcribes meetings into summaries, decisions and action items, written straight into the customer\'s record.'],
+ ['Knowledge Agent','Finds gaps in the knowledge base and drafts or updates articles, tracking source, confidence and effective date.'],
+ ['Governed Digital Employees','Gives every AI agent an identity, a role, a reporting line, a budget of authority and a lifecycle — managed the way a human employee is.'],
+ ['Autonomy & Approval Controls','Sets human-in-the-loop checkpoints, approval gates, spending limits and rollback for every agent, so nothing acts outside its authority.']
+ ]},
+
+/* ================= PLATFORM ================= */
+{g:'pl', id:'platform', name:'Platform Foundation', tag:'Platform · Shared',
+ intro:'The shared foundation every CRM module, ERP module and AI agent is built on — data, events, analytics, security, integration and operations.',
+ connects:'Every module and every agent',
+ f:[
+ ['Shared Business Data Graph','One live, permission-aware graph of every customer, supplier, product, asset and employee record, shared by every module instead of duplicated.'],
+ ['Event-Driven Backbone','Carries every business, customer and system change as an event, so policies, agents and analytics react the moment something happens.'],
+ ['Governed Metrics Layer','Each business metric is defined once with an owner, certification status, lineage and change history, so two reports never quietly disagree.'],
+ ['Natural-Language Analytics','Turns a plain-language question into a governed data query, and shows the generated query for transparency.'],
+ ['Self-Service Analytics','A drag-and-drop analysis tool on certified data models, so analysts can explore data without writing queries.'],
+ ['Standard Report Packs','Ready-made report packs for finance, supply chain, revenue, people and platform data, all on the same governed metrics.'],
+ ['Workflow & Orchestration','Orchestrates business processes with tasks and decision rules, including steps that wait for a human to act.'],
+ ['Low-Code Builder','Build custom objects, flows and screens with low code; extensions are packaged so they can be shared and reused.'],
+ ['API & Integration Gateway','API gateway, event bus, webhooks, connectors and data-movement tools that connect to external ERP, billing, payment, inventory and identity systems.'],
+ ['EDI & Partner Network','Electronic data interchange and partner-network integration for enterprise transaction exchange.'],
+ ['Identity & Access Management','Central identity with role- and attribute-based access control and tenant isolation, controlling what each user and agent can see or do.'],
+ ['Encryption & Key Management','Encrypts data and manages encryption keys to enterprise security standards.'],
+ ['Consent & Privacy Controls','Applies consent, purpose-of-use, data-residency and privacy-rights rules automatically wherever data is accessed.'],
+ ['Data Loss Prevention','Data-loss-prevention and compliance controls, connected to the platform\'s compliance monitoring.'],
+ ['Immutable Audit Trail','A permanent, tamper-evident record of every action — by a person or an agent — for evidence and forensic review.'],
+ ['AI Governance','Governs AI model risk and explainability, recording the reasoning, evidence, policy outcome and result behind every AI decision.'],
+ ['Mobile Workspaces','Mobile workspaces for approvals and tasks, so work doesn\'t stop when someone steps away from a desk.'],
+ ['Offline-First Operations','Keeps warehouse, field and retail work running without a connection, queuing transactions and resolving conflicts once back online.'],
+ ['Adaptive Workspaces','Adjusts the workspace and embedded analytics each person sees based on their role and current context.'],
+ ['Multi-Tenancy & Isolation','Logical multi-tenancy plus a dedicated single-tenant option, with isolation enforced at the data-access layer.'],
+ ['Platform Observability','Real-time visibility into system health and integration status for operations teams.'],
+ ['Document Management','Folders, versioning and documents linked directly to the business records they belong to.']
+ ]}
+];
+
+const GROUPS = {
+  crm:{title:'CRM — Sell & serve', cls:'g-crm', intro:'Everything that touches the customer: records, leads, sales, engagement and service.'},
+  erp:{title:'ERP — Run & deliver', cls:'g-erp', intro:'Everything that runs the business: money, supply, making, moving, people, projects, safety and retail.'},
+  ai:{title:'AI agents', cls:'g-ai', intro:'Specialised agents that work across CRM and ERP data, each within approved limits.'},
+  pl:{title:'Platform foundation', cls:'g-pl', intro:'The shared layer underneath every module and agent.'}
+};
+
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function hl(text, q){
+  const t = esc(text);
+  if(!q) return t;
+  const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')','ig');
+  return t.replace(re,'<mark>$1</mark>');
+}
+
+
+/* CRM flow tree */
+const CT_SHORT = {
+ 'Unified Customer Records':'One record per person, company or household, used by every team',
+ 'Customer Timeline & Memory':'Full interaction history, each fact with source and confidence',
+ 'Relationship Mapping':'Who connects to whom, and who decides inside an account',
+ 'Duplicate & Identity Matching':'Finds and merges the same customer across names and channels',
+ 'Consent Management':'What each customer agreed to, respected everywhere',
+ 'Conversational Lead Capture':'Leads captured from chat, email, SMS or voice',
+ 'Lead Scoring & Routing':'Score, enrich, qualify and assign to the right owner',
+ 'Lead Conversion Mapping':'Lead becomes contact, organisation and deal in one step',
+ 'Sales Pipeline Management':'Custom stages and win-probabilities feeding a live forecast',
+ 'Opportunity Management':'Deal value, products, pricing, risk and activity in one place',
+ 'Sales Engagement & Sequencing':'Sequences, playbooks, shared inbox and follow-ups',
+ 'Quoting & Pricing (CPQ)':'Quotes from price books and tax rules, with approvals',
+ 'Sales Order Management':'Approve orders and reserve stock for fulfilment',
+ 'Contracts & Subscriptions':'Renewals, terms and entitlements tracked as records',
+ 'Engagement & Loyalty':'Campaigns, offers, loyalty and next best action per customer',
+ 'Case Management':'Priority, SLA timer, status, sentiment and root cause per case',
+ 'Omnichannel Support':'Email, chat, forms and voice in one history, plus self-service portal',
+ 'Knowledge Base':'Governed articles used by both people and AI',
+ 'Customer Satisfaction Tracking':'CSAT after every resolved case',
+ 'Field Service Management':'Schedule and dispatch on-site technicians',
+ 'Warranty & Entitlements':'Route requests by what the customer is covered for',
+ 'Depot Repair & Returns':'Repair and return process, logged to the asset history'
+};
+const CT_SUB = {customer360:'One trusted record for every customer', leads:'First contact to qualified opportunity', sales:'Pipeline to signed order', cx:'Engagement after the sale', service:'Fast support with full history'};
+document.getElementById('crmTree').innerHTML = DATA.filter(d=>d.g==='crm').map(d=>`
+  <div class="ct-branch">
+    <a class="ct-mod" href="#d-${d.id}" style="display:block;text-decoration:none"><h4>${esc(d.name)}</h4><p>${esc(CT_SUB[d.id]||'')}</p><span class="n">${d.f.length} feature${d.f.length>1?'s':''}</span></a>
+    <ul class="ct-feats">${d.f.map(([t])=>`<li class="ct-feat"><div class="ct-card"><b>${esc(t)}</b><span>${esc(CT_SHORT[t]||'')}</span></div></li>`).join('')}</ul>
+  </div>`).join('');
+
+
+/* ERP flow tree */
+const ET_SUB = {finance:'One ledger, every book, every currency', mgmtacc:'Where cost and profit come from', epm:'Plan, forecast and close', procurement:'Requisition to supplier performance', supply:'What is needed, where and when', pe:'Define the product before building', mfg:'Plan and run production', quality:'Catch problems, prove the fix', warehouse:'Goods in, stored, and out', logistics:'Move goods source to destination', sd:'Order-to-cash for physical goods', assets:'Keep assets running and accounted', hcm:'Hire to exit for every worker', projects:'On time and on budget', ehs:'Safe, healthy and compliant', retail:'Point of sale, online or offline'};
+const ET_SHORT = {
+ 'Multi-Dimensional Chart of Accounts':'One chart for many entities, calendars and currencies',
+ 'Parallel Books of Record':'Local, group, tax and management books from one event',
+ 'Journal Controls & Audit Linkage':'Balanced, approved journals linked to source',
+ 'Rule-Driven Subledger Accounting':'Auto accounting entries from business events',
+ 'Accounts Payable':'Supplier invoice to approval to payment',
+ 'Accounts Receivable':'Customer billing, collections and balances',
+ 'Fixed Asset Accounting':'Capitalise, depreciate, transfer and retire assets',
+ 'Lease Accounting':'Full lease lifecycle and its accounting',
+ 'Treasury & Cash Management':'Bank, cash and liquidity in one view',
+ 'Revenue Recognition':'Revenue recognised in step with contracts and billing',
+ 'Tax Calculation & Reporting':'Jurisdiction-aware tax, auditable to source',
+ 'Expense Management':'Phone capture, receipt reading and policy checks',
+ 'Intercompany Transactions':'Match, net and settle between group companies',
+ 'Cost & Profit Centers':'Shared model of cost and profit owners',
+ 'Product Costing & Profitability':'Real product cost from live production data',
+ 'Activity-Based Costing':'Allocate overhead by actual drivers',
+ 'Integrated Planning & Budgeting':'One model for finance, workforce, sales and supply plans',
+ 'Driver-Based Planning':'Plans built from operational drivers',
+ 'Scenario Planning':'Test what-ifs without touching the shared plan',
+ 'Rolling Forecast':'Auto-rolling forecast with recorded overrides',
+ 'Financial Consolidation':'Ownership, currency and eliminations handled automatically',
+ 'Close Management':'Orchestrated close with continuous reconciliation',
+ 'Narrative & Disclosure Reporting':'Board and disclosure reports on governed data',
+ 'Enterprise Profitability Analysis':'Profitability and allocation across the enterprise',
+ 'High-Speed Calculation Engine':'Fast shared engine for planning and reporting',
+ 'Purchase Requisitions':'Internal buy requests with approval',
+ 'Purchase Order Management':'POs, receipts and supplier order lifecycle',
+ 'Strategic Sourcing':'Bids, tenders and supplier selection',
+ 'Procurement Contracts':'Supplier contracts and their obligations',
+ 'Supplier Management':'Onboard, qualify and rate suppliers',
+ 'Spend Analytics':'Where and how the company spends',
+ 'Multi-Location Inventory':'Stock and valuation across all locations, live',
+ 'Demand Planning':'AI-assisted demand forecasting',
+ 'Supply Planning & Replenishment':'Replenishment matched to buying and making capacity',
+ 'Order Promising':'Realistic delivery dates from live constraints',
+ 'Product Lifecycle Management':'One master product definition and lifecycle',
+ 'Bill of Materials':'Components that make each product',
+ 'Routing & Work Centers':'Operation steps and where they happen',
+ 'Engineering Change Management':'Version-controlled product changes',
+ 'Product Compliance & Traceability':'Product compliance tied to quality data',
+ 'Production Planning & Scheduling':'Schedule by demand, capacity and material',
+ 'Capacity Planning':'See constraints across work centers',
+ 'Shop-Floor Control':'Track production as it happens',
+ 'Process & Batch Manufacturing':'Batch production with full traceability',
+ 'Manufacturing Analytics':'Production performance on governed metrics',
+ 'Quality & Inspection Planning':'Plan checks alongside design',
+ 'Inspection & Acceptance':'Results and decisions per batch or lot',
+ 'Non-Conformance & CAPA':'Fix defects and prove the fix worked',
+ 'Quality Audit Management':'Audits with evidence attached',
+ 'Certificates & Traceability':'Certificates tied to supplier, product and lot',
+ 'Warehouse & Location Control':'Structure, bins and controls across warehouses',
+ 'Receiving & Put-Away':'Inbound goods linked to PO and quality check',
+ 'Picking & Packing':'Picking, waves and packing for orders',
+ 'Mobile Warehouse Execution':'Handheld tasks with offline support',
+ 'Freight & Carrier Planning':'Freight, carriers, rating and tendering',
+ 'Shipment Execution & Settlement':'Track shipments, settle freight and claims',
+ 'Route Optimization':'Best routes and ETAs',
+ 'Customer Master & Credit':'Customer data, credit terms and risk',
+ 'Order Capture & Fulfillment':'Orders with price and availability checks',
+ 'Shipping & Delivery':'Ship and deliver via warehouse and transport',
+ 'Billing & Invoicing':'Shipped order straight to accurate invoice',
+ 'Rebates & Incentives':'Rebates tied to actual sales',
+ 'Asset Lifecycle & Installed Base':'Every asset from purchase to retirement',
+ 'Preventive & Predictive Maintenance':'Scheduled and condition-based maintenance',
+ 'Maintenance Work Orders':'Work orders with parts, labour and history',
+ 'Reliability & Condition Monitoring':'Track asset reliability and condition',
+ 'Telemetry Integration':'Live equipment data into the asset record',
+ 'Worker Lifecycle Management':'Join, move, promote and exit',
+ 'Time & Attendance':'Attendance and hours with approvals, even on mobile',
+ 'Payroll & Compensation':'Payroll posted straight to finance',
+ 'Recruiting & Onboarding':'Hire and onboard new joiners',
+ 'Benefits Administration':'Employee benefits from one record',
+ 'Learning & Development':'Training linked to skills',
+ 'Workforce Planning':'Headcount plans from live position data',
+ 'Project Planning':'Tasks, dependencies, milestones and baselines',
+ 'Project Costing':'Actual and burdened cost from every source',
+ 'Project Billing':'T&M, fixed, milestone and more, linked to revenue',
+ 'Earned Value & Project Control':'Earned value, variances and forecast at completion',
+ 'Resource Management':'Book people by skill and availability',
+ 'Safety Management':'Permits and inspections with site context',
+ 'Incident Management':'Capture, investigate and fix incidents',
+ 'Risk Assessment':'Risks and controls with scheduled reviews',
+ 'Hazardous Substance Tracking':'Chemicals, SDS and storage rules',
+ 'Occupational Health Records':'Exposure and fitness-for-work, restricted access',
+ 'Environmental Monitoring':'Emissions, waste, energy and water',
+ 'Compliance Calendar & CAPA':'Deadlines, evidence and e-signatures',
+ 'Point of Sale':'Core checkout linked to stock and ledger',
+ 'Self-Checkout':'Customer self-checkout lanes',
+ 'Mobile Point of Sale':'Sell from a phone or tablet',
+ 'Kiosk Transactions':'Kiosk sales on shared product and price data',
+ 'Scan & Go':'Scan while shopping, pay and leave',
+ 'Offline Retail Autonomy':'Keep selling without internet, sync later',
+ 'Payment Processing':'Payments with isolated card data',
+ 'Fiscalisation & Compliance':'Country-specific fiscal rules',
+ 'Hospitality Operations':'Restaurant and back-of-house on same engine'
+};
+const FAMILIES = [
+ {name:'Finance & Planning', desc:'The books, the costs behind them, and the plans that steer the business.', ids:['finance','mgmtacc','epm']},
+ {name:'Supply Chain', desc:'Buying, stocking, storing and moving goods.', ids:['procurement','supply','warehouse','logistics']},
+ {name:'Manufacturing', desc:'Designing, making and quality-checking the product.', ids:['pe','mfg','quality']},
+ {name:'Order-to-Cash & Retail', desc:'Turning orders and in-store sales into shipped goods and invoices.', ids:['sd','retail']},
+ {name:'Assets & Projects', desc:'Keeping equipment running and delivering project work.', ids:['assets','projects']},
+ {name:'People & Compliance', desc:'The workforce, and keeping them and the business safe and compliant.', ids:['hcm','ehs']}
+];
+const byId = id => DATA.find(d=>d.id===id);
+function erpTree(){
+  const mods = DATA.filter(d=>d.g==='erp');
+  const total = mods.reduce((a,d)=>a+d.f.length,0);
+  const fams = FAMILIES.map(F=>{
+    const ms = F.ids.map(byId);
+    const fc = ms.reduce((a,d)=>a+d.f.length,0);
+    return `<div class="ef">
+      <div class="ef-head"><h5>${esc(F.name)}</h5><span class="n">${ms.length} modules · ${fc} features</span></div>
+      <p class="ef-desc">${esc(F.desc)}</p>
+      <div class="ef-mods">${ms.map(d=>`<div>
+        <a class="et-mod" href="#d-${d.id}"><h6>${esc(d.name)}</h6><p>${esc(ET_SUB[d.id]||'')}</p><span class="n">${d.f.length} feature${d.f.length>1?'s':''}</span></a>
+        <ul class="et-feats">${d.f.map(([t])=>`<li class="et-feat"><div class="et-card"><b>${esc(t)}</b><span>${esc(ET_SHORT[t]||'')}</span></div></li>`).join('')}</ul>
+      </div>`).join('')}</div></div>`;
+  }).join('');
+  return `<div class="et" aria-label="ERP feature flow">
+    <div class="et-rootnode"><h4>ERP</h4><p>Enterprise Resource Planning · ${FAMILIES.length} families · ${mods.length} modules · ${total} features</p></div>
+    <div class="et-fams">${fams}</div></div>`;
+}
+
+/* CRM <-> ERP connection flows */
+const CX = [
+ {t:'Lead to cash', d:'A prospect becomes a paying customer. The sale is made in CRM; ERP fulfils, ships, bills and books it.',
+  n:[['c','Lead Management','Lead Scoring & Routing'],['c','Sales','Opportunity, Quote & Sales Order'],['H'],['e','Supply Chain','Order Promising & Inventory'],['e','Warehouse & Logistics','Pick, Pack & Ship'],['e','Sales & Distribution','Billing & Invoicing'],['e','Finance','Receivables & Revenue Recognition']]},
+ {t:'Contract to revenue', d:'Subscriptions and renewals agreed in CRM drive recurring billing, revenue and the forecast.',
+  n:[['c','Sales','Contracts & Subscriptions'],['H'],['e','Sales & Distribution','Billing & Invoicing'],['e','Finance','Revenue Recognition'],['e','EPM','Rolling Forecast']]},
+ {t:'One customer, one credit view', d:'The same customer record carries into ERP credit and collections, and the payment status is visible back in CRM.',
+  n:[['c','Customer 360','Unified Customer Records'],['H'],['e','Sales & Distribution','Customer Master & Credit'],['e','Finance','Accounts Receivable'],['e','Finance','Collections & balance']]},
+ {t:'Service to asset', d:'A support case uses warranty cover and field or depot work, and the outcome is written to the asset and its accounts.',
+  n:[['c','Customer Service','Case Management'],['c','Customer Service','Warranty & Entitlements'],['c','Customer Service','Field Service / Depot Repair'],['H'],['e','Asset Management','Work Orders & Installed Base'],['e','Finance','Fixed Asset Accounting']]},
+ {t:'Deal to project', d:'A won services deal hands off into project delivery, costing and billing.',
+  n:[['c','Sales','Opportunity Management'],['H'],['e','Projects','Project Planning'],['e','Projects','Resource Management'],['e','Projects','Project Costing & Billing'],['e','Finance','Revenue Recognition']]},
+ {t:'Store sale to customer history', d:'A purchase at the till updates stock and the ledger in ERP, and lands on the customer\'s timeline in CRM.',
+  n:[['e','Retail & Edge','Point of Sale'],['e','Supply Chain','Multi-Location Inventory'],['e','Finance','Ledger posting'],['H'],['c','Customer 360','Customer Timeline & Memory'],['c','Customer Experience','Engagement & Loyalty']]}
+];
+function renderCX(){
+  document.getElementById('cxList').innerHTML = CX.map(f=>{
+    const parts=[];
+    f.n.forEach((x,i)=>{
+      if(x[0]==='H'){ parts.push(`<div class="cx-arrow hand" aria-label="handoff between CRM and ERP"><span>handoff</span><em>→</em></div>`); return; }
+      if(i>0 && f.n[i-1][0]!=='H') parts.push('<div class="cx-arrow" aria-hidden="true">→</div>');
+      parts.push(`<div class="cx-node ${x[0]}"><small>${esc(x[1])}</small><b>${esc(x[2])}</b></div>`);
+    });
+    return `<div class="cx-flow"><h3>${esc(f.t)}</h3><p>${esc(f.d)}</p><div class="cx-chain">${parts.join('')}</div></div>`;
+  }).join('');
+}
+
+/* hero chips */
+['crm','erp'].forEach(g=>{
+  document.getElementById('chips-'+g).innerHTML = (g==='erp' ? FAMILIES.flatMap(F=>F.ids.map(byId)) : DATA.filter(d=>d.g===g))
+    .map(d=>`<a href="#d-${d.id}">${esc(d.name)}</a>`).join('');
+});
+
+let filter='all', query='';
+function render(){
+  const q = query.trim().toLowerCase();
+  let html='', total=0;
+  Object.keys(GROUPS).forEach(g=>{
+    if(filter!=='all' && filter!==g) return;
+    const G = GROUPS[g];
+    let groupHtml='', gCount=0;
+    const list = g==='erp' ? FAMILIES.flatMap(F=>F.ids.map(id=>Object.assign({},byId(id),{_fam:F.name, _first:F.ids[0]===id}))) : DATA.filter(d=>d.g===g);
+    list.forEach(d=>{
+      const domainHit = q && d.name.toLowerCase().includes(q);
+      const feats = d.f.filter(([t,x]) => !q || domainHit || t.toLowerCase().includes(q) || x.toLowerCase().includes(q));
+      if(!feats.length) return;
+      gCount += feats.length;
+      if(d._first && !q) groupHtml += `<div class="fam-sub"><h5>${esc(d._fam)}</h5><span>${FAMILIES.find(F=>F.name===d._fam).ids.length} modules</span></div>`;
+      groupHtml += `<article class="domain ${G.cls}" id="d-${d.id}">
+        <div class="d-head"><h4>${hl(d.name,q)}</h4><span class="tag">${esc(d.tag)}</span>
+        <span class="d-count">${q ? feats.length+' of '+d.f.length : d.f.length} feature${d.f.length>1?'s':''}</span></div>
+        <p class="d-intro">${esc(d.intro)}</p>
+        <ul class="feats">${feats.map(([t,x])=>`<li><b>${hl(t,q)}</b><p>${hl(x,q)}</p></li>`).join('')}</ul>
+        <div class="connects"><b>Connects to:</b> ${esc(d.connects)}</div>
+      </article>`;
+    });
+    if(!gCount) return;
+    total += gCount;
+    html += `<div class="group ${G.cls}" id="g-${g}"><div class="group-title"><h3>${G.title}</h3><span>${gCount} feature${gCount>1?'s':''}</span></div>
+      <p class="group-intro">${G.intro}</p>${(g==='erp' && !q) ? erpTree() : ''}${groupHtml}</div>`;
+  });
+  const cat = document.getElementById('catalogue');
+  cat.innerHTML = html || `<div class="empty">No features match "${esc(query)}". Try a broader word such as "order", "tax" or "agent", or switch the filter back to All.</div>`;
+  document.getElementById('note').textContent = q ? `${total} feature${total===1?'':'s'} match "${query}"` : '';
+}
+render();
+renderCX();
+
+document.getElementById('q').addEventListener('input', e=>{ query=e.target.value; render(); });
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+  filter=b.dataset.f;
+  document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true':'false'));
+  render();
+}));
+
+/* nav + hero links should reset filters so targets exist */
+document.querySelectorAll('a[href^="#g-"], a[href^="#d-"]').forEach(a=>a.addEventListener('click',()=>{
+  if(filter!=='all' || query){
+    filter='all'; query=''; document.getElementById('q').value='';
+    document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed', x.dataset.f==='all'?'true':'false'));
+    render();
+  }
+}));
+
+/* theme toggle */
+const root=document.documentElement;
+try{ const s=localStorage.getItem('veloris-theme'); if(s) root.dataset.theme=s; }catch(e){}
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme = dark ? 'light' : 'dark';
+  try{ localStorage.setItem('veloris-theme', root.dataset.theme); }catch(e){}
+});
+</script>
+</body>
+</html>
